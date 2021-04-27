@@ -1,3 +1,7 @@
-body {
-    background: blue;
+.top-header {
+    background: #262626;
+}
+
+.top-header li a {
+    text-decoration: none;
 }
