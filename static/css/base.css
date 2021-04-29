@@ -2,7 +2,7 @@
     background: #262626;
 }
 
-.top-header li a {
+li a {
     text-decoration: none;
 }
 
@@ -12,7 +12,7 @@
     background-color: #007a47;
 }
 
-.navbar-expand .navbar-nav .nav-link {
+.navbar-expand-sm .navbar-nav .nav-link {
     color: #fff;
     padding-left: 20px;
     padding-right: 20px;
@@ -22,6 +22,13 @@
     border-bottom: 3px solid #007a47;
 }
 
-.navbar-expand .navbar-nav .nav-link:hover {
+.navbar-expand-sm .navbar-nav .nav-link:hover {
     border-bottom: 3px solid #fff;
+}
+
+.navbar button {
+    color: #fff;
+}
+.fa-bars {
+    color: #fff;
 }

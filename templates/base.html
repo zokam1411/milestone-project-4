@@ -23,18 +23,6 @@
     {% block extra_css %}
     {% endblock %}
 
-    {% block corejs %}
-    <script src="https://kit.fontawesome.com/288402cc5e.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
-    </script>
-    {% endblock %}
-
     {% block extra_js %}
     {% endblock %}
 
@@ -42,13 +30,12 @@
 </head>
 
 <body>
-
     <header>
         <!-- Top header -->
-        <div class="top-header mb-2">
+        <div class="top-header mb-2 d-none d-sm-block">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center text-md-end">
+                    <div class="col-12 text-end">
                         <ul class="m-0">
                             {% if request.user.is_authenticated %}
                             <li class="list-inline-item dropdown">
@@ -97,8 +84,8 @@
                             <img src="../media/logo.png" alt="FFRCCC logo">
                         </a>
                     </div>
-                    <div class="col-12 text-center col-md-9 my-auto d-inline-block">
-                        <h1 class="mt-2">Check out our online club store!</h1>
+                    <div class="col-12 text-center col-md-9 my-auto d-none d-sm-block">
+                        <h1 class="mt-2">Check out our online store!</h1>
                         <a href="" class="btn btn-outline-danger btn-lg fw-bold mb-2 text-uppercase">Visit store</a>
                     </div>
                 </div>
@@ -106,16 +93,57 @@
         </div>
     </header>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand sticky-top mt-2 mb-2">
-            <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-                <a class="nav-item nav-link" href="#">Blog</a>
-                <a class="nav-item nav-link" href="#">Membership</a>
-                <a class="nav-item nav-link" href="#">Store</a>
+    <nav class="navbar navbar-expand-sm sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler pull-left" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fas fa-bars"></i></span>
+            </button>
+            <ul class="m-0 d-sm-none">
+                {% if request.user.is_authenticated %}
+                <li class="list-inline-item dropdown">
+                    <a class="dropdown-toggle text-white" href="#" role="button" id="my-account"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        My account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="my-account">
+                        <li class="text-center mb-2">Hello <strong>{{request.user}}</strong>!</li>
+                        {% if request.user.is_superuser %}
+                        <li><a class="dropdown-item" href="#">Product Management</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a href="{% url 'account_logout' %}" class="dropdown-item" href="#">Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="list-inline-item"><a href="{% url 'account_login' %}" class="text-white"><i
+                            class="fas fa-pen fa-xs"></i> Log In</a></li>
+                <li class="list-inline-item"><a href="{% url 'account_signup' %}" class="text-white"><i
+                            class="fas fa-sign-in-alt fa-xs"></i> Register</a></li>
+                {% endif %}
+                <li class="list-inline-item text-white">|</li>
+                <li class="list-inline-item">
+                    <a href="" class="text-white">
+                        <i class="fas fa-shopping-basket"></i>
+                        {% if grand_total %}
+                        &euro;{{ grand_total|floatformat:2 }}
+                        {% else %}
+                        &euro;0.00
+                        {% endif %}
+                    </a>
+                </li>
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-item nav-link mx-auto" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item nav-link mx-auto" href="#">Blog</a>
+                    <a class="nav-item nav-link mx-auto" href="#">Membership</a>
+                    <a class="nav-item nav-link mx-auto" href="#">Store</a>
+                </div>
             </div>
         </div>
     </nav>
-
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
@@ -127,6 +155,18 @@
     {% endblock %}
 
     {% block postloadjs %}
+    {% endblock %}
+
+    {% block corejs %}
+    <script src="https://kit.fontawesome.com/288402cc5e.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+    </script>
     {% endblock %}
 </body>
 
