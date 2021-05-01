@@ -32,3 +32,36 @@ li a {
 .fa-bars {
     color: #fff;
 }
+
+/* ----------------------------------- index.html */
+
+.hero-section {
+  position: relative;
+}
+
+.hero-image {
+  height: 50vh;
+  background: url(../../media/hero-image.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opaque-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        height: 30vh;
+    }
+}
