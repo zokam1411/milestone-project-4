@@ -34,7 +34,7 @@ li a {
 }
 
 /* ----------------------------------- index.html */
-
+/* hero section */
 .hero-section {
   position: relative;
 }
@@ -58,6 +58,12 @@ li a {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* membership section */
+.membership-section {
+    background: #007a47;
+    color: #fff;
 }
 
 @media (max-width: 768px) {
