@@ -23,75 +23,58 @@
     {% block extra_css %}
     {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
-
     <title>RC Club {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
-    <header>
-        <!-- Top header -->
-        <div class="top-header mb-2 d-none d-sm-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-end">
-                        <ul class="m-0">
-                            {% if request.user.is_authenticated %}
-                            <li class="list-inline-item dropdown">
-                                <a class="dropdown-toggle text-white" href="#" role="button" id="my-account"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    My account
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="my-account">
-                                    <li class="text-center mb-2">Hello <strong>{{request.user}}</strong>!</li>
-                                    {% if request.user.is_superuser %}
-                                    <li><a class="dropdown-item" href="#">Product Management</a></li>
-                                    {% endif %}
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><a href="{% url 'account_logout' %}" class="dropdown-item" href="#">Log Out</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            {% else %}
-                            <li class="list-inline-item"><a href="{% url 'account_login' %}" class="text-white"><i
-                                        class="fas fa-pen fa-xs"></i> Log In</a></li>
-                            <li class="list-inline-item"><a href="{% url 'account_signup' %}" class="text-white"><i
-                                        class="fas fa-sign-in-alt fa-xs"></i> Register</a></li>
-                            {% endif %}
-                            <li class="list-inline-item text-white">|</li>
-                            <li class="list-inline-item">
-                                <a href="" class="text-white">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    {% if grand_total %}
-                                    &euro;{{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                    &euro;0.00
-                                    {% endif %}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bottom header -->
-        <div class="bottom-header mt-2 mb-2">
-            <div class="container">
-                <div class="row">
-                    <div class="logo col-12 text-center text-md-left col-md-3 mt-2 mb-2">
-                        <a href="{% url 'home' %}">
-                            <img src="../media/logo.png" alt="FFRCCC logo">
-                        </a>
-                    </div>
-                    <div class="col-12 text-center col-md-9 my-auto d-none d-sm-block">
-                        <h1 class="mt-2">Check out our online store!</h1>
-                        <a href="" class="btn btn-outline-danger btn-lg fw-bold mb-2 text-uppercase">Visit store</a>
-                    </div>
+    <!-- Top header -->
+    <header class="top-header mb-2 d-none d-sm-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-end">
+                    <ul class="m-0">
+                        {% if request.user.is_authenticated %}
+                        <li class="list-inline-item dropdown">
+                            <a class="dropdown-toggle text-white" href="#" role="button" id="my-account"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                My account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="my-account">
+                                <li class="text-center mb-2">Hello <strong>{{request.user}}</strong>!</li>
+                                {% if request.user.is_superuser %}
+                                <li><a class="dropdown-item" href="#">Product Management</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a href="{% url 'account_logout' %}" class="dropdown-item" href="#">Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="list-inline-item"><a href="{% url 'account_login' %}" class="text-white"><i
+                                    class="fas fa-pen fa-xs"></i> Log In</a></li>
+                        <li class="list-inline-item"><a href="{% url 'account_signup' %}" class="text-white"><i
+                                    class="fas fa-sign-in-alt fa-xs"></i> Register</a></li>
+                        {% endif %}
+                        <li class="list-inline-item text-white">|</li>
+                        <li class="list-inline-item">
+                            <a href="" class="text-white">
+                                <i class="fas fa-shopping-cart"></i>
+                                {% if grand_total %}
+                                &euro;{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                &euro;0.00
+                                {% endif %}
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </header>
+
+    {% block bottom_header %}
+    {% endblock %}
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm sticky-top">
         <div class="container-fluid">
@@ -108,9 +91,6 @@
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
 
     {% block content %}
     {% endblock %}
@@ -129,6 +109,10 @@
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
     </script>
     {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
 </body>
 
 </html>

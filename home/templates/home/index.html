@@ -1,6 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block bottom_header %}
+<!-- Bottom header -->
+<header class="bottom-header mt-2 mb-2">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-12 text-center text-md-left col-md-3 mt-2 mb-2">
+                <a href="{% url 'home' %}">
+                    <img src="../media/logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-12 text-center col-md-9 my-auto d-none d-sm-block">
+                <h1 class="mt-2">Check out our online store!</h1>
+                <a href="" class="btn btn-outline-danger btn-lg fw-bold mb-2 text-uppercase">Visit store</a>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
 {% block content %}
 <!-- hero section -->
 <section class="hero-section">
@@ -53,7 +72,8 @@
         <div class="row">
             <div class="col-12">
                 <h4>Membership</h4>
-                <p class="col-12 col-md-8 offset-md-2">Membership entitles to unlimited use of the track at weekends and during Wednesday training sessions.
+                <p class="col-12 col-md-8 offset-md-2">Membership entitles to unlimited use of the track at weekends and
+                    during Wednesday training sessions.
                     Members also get a 5% discount on all products in the store. Do not hesitate, join us today!
                 </p>
                 <a href="#" class="btn btn-danger">Become a member</a>
