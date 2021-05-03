@@ -41,7 +41,7 @@ li a {
 
 .hero-image {
   height: 56vh;
-  background: url(../../media/hero-image.jpg) no-repeat center center;
+  background: url('/media/hero-image.jpg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -70,4 +70,21 @@ li a {
     .hero-image {
         height: 30vh;
     }
+}
+
+/* ----------------------------------- products.html */
+
+.img-holder {
+    height: 140px;
+    margin: 15px;
+}
+
+.img-holder img {
+    height: 140px;
+    width: 100%;
+    transition: .2s;
+}
+
+.img-holder img:hover {
+  transform: scale(1.1);
 }
