@@ -1,0 +1,35 @@
+<ul class="m-0 d-sm-none">
+    {% if request.user.is_authenticated %}
+    <li class="list-inline-item dropdown">
+        <a class="dropdown-toggle text-white" href="#" role="button" id="my-account" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            My account
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="my-account">
+            <li class="text-center mb-2">Hello <strong>{{request.user}}</strong>!</li>
+            {% if request.user.is_superuser %}
+            <li><a class="dropdown-item" href="#">Product Management</a></li>
+            {% endif %}
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a href="{% url 'account_logout' %}" class="dropdown-item" href="#">Log Out</a>
+            </li>
+        </ul>
+    </li>
+    {% else %}
+    <li class="list-inline-item"><a href="{% url 'account_login' %}" class="text-white"><i class="fas fa-pen fa-xs"></i>
+            Log In</a></li>
+    <li class="list-inline-item"><a href="{% url 'account_signup' %}" class="text-white"><i
+                class="fas fa-sign-in-alt fa-xs"></i> Register</a></li>
+    {% endif %}
+    <li class="list-inline-item text-white">|</li>
+    <li class="list-inline-item">
+        <a href="" class="text-white">
+            <i class="fas fa-shopping-basket"></i>
+            {% if grand_total %}
+            &euro;{{ grand_total|floatformat:2 }}
+            {% else %}
+            &euro;0.00
+            {% endif %}
+        </a>
+    </li>
+</ul>
