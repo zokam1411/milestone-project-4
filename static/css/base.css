@@ -92,3 +92,8 @@ li a {
 .card:hover {
     border: 1px solid green;
 }
+
+/* form search button */
+.bg-gray {
+    background: #bbbaba;
+}
