@@ -2,7 +2,7 @@
     background: #262626;
 }
 
-li a {
+ a {
     text-decoration: none;
 }
 
@@ -96,4 +96,8 @@ li a {
 /* form search button */
 .bg-gray {
     background: #bbbaba;
+}
+
+.text-start {
+    padding-left: 5px;
 }
