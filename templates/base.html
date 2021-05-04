@@ -95,9 +95,6 @@
     {% block content %}
     {% endblock %}
 
-    {% block postloadjs %}
-    {% endblock %}
-
     {% block corejs %}
     <script src="https://kit.fontawesome.com/288402cc5e.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -111,6 +108,9 @@
     {% endblock %}
 
     {% block extra_js %}
+    {% endblock %}
+
+    {% block postloadjs %}
     {% endblock %}
 
 </body>
