@@ -23,7 +23,7 @@
         <div class="row">
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <a href="">All products</a>
+                    <a href="{{ url 'products' }}">All products</a>
                 </li>
                 <li class="list-inline-item">
                     <a href="">Accessories</a>
@@ -44,13 +44,20 @@
                 <div class="card h-100">
                     <div class="img-holder">
                         {% if product.image %}
-                        <img src="/media/{{ product.image }}" class="card-img-top" alt="{{product.name}}">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="/media/{{ product.image }}" class="card-img-top" alt="{{product.name}}">
+                        </a>
                         {% else %}
-                        <img src="/media/no_image.jpg" class="card-img-top" alt="{{product.name}}">
-                        {% endif %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="/media/no_image.jpg" class="card-img-top" alt="{{product.name}}">
+                            {% endif %}
+                        </a>
                     </div>
+                    </a>
                     <div class="card-body">
-                        <h6 class="card-title">{{product.name}}</h6>
+                        <a href="{% url 'product_detail' product.id %}">
+                            <h6 class="card-title">{{product.name}}</h6>
+                        </a>
                         <p class="card-text">{{product.price}}</p>
                     </div>
                     <div>
