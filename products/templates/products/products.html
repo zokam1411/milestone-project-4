@@ -3,38 +3,9 @@
 
 {% block content %}
 <!-- Search section -->
-<section class="search-section text-center">
-    <div class="container col-12 col-lg-4 mt-2">
-        <div class="row">
-            <form method="GET" action="">
-                <div class="input-group w-100">
-                    <input class="form-control border border-black rounded-0" type="text" name="q"
-                        placeholder="Search...">
-                    <div class="input-group-append bg-gray">
-                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                            <span class="icon">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="row">
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="{{ url 'products' }}">All products</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="">Accessories</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="">Motors</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
+
+{% include 'includes/search-section.html' %}
+
 <!-- Products section -->
 <section class="products-section">
     <div class="container">
