@@ -6,6 +6,22 @@
 
 {% include 'includes/search-section.html' %}
 
+<!-- Sort -->
+<div class="container">
+    <div class="row text-end">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by...
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?sort=category&direction=asc">Category</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <!-- Products section -->
 <section class="products-section">
     <div class="container">
