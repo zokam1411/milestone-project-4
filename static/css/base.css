@@ -82,9 +82,13 @@ li a {
 .img-holder img {
     height: 140px;
     width: 100%;
-    transition: .2s;
+    transition: .5s;
 }
 
-.img-holder img:hover {
-  transform: scale(1.1);
+.card:hover >  .img-holder img {
+    transform: scale(1.1);
+}
+
+.card:hover {
+    border: 1px solid green;
 }
