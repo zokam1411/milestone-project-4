@@ -13,7 +13,7 @@
             {% if product.category %}
             <div class="small text-start">
                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                    </i>{{ product.category.friendly_name }}
+                    {{ product.category.friendly_name }}
                 </a>
             </div>
             {% endif %}
