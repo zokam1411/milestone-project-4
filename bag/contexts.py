@@ -7,7 +7,7 @@ def bag_contents(request):
     bag_items = []
     total = 0
     product_count = 0
-    delivery = STANDARD_DELIVERY
+    delivery = settings.STANDARD_DELIVERY
     grand_total = delivery + total
 
     context = {
