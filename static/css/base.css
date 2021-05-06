@@ -1,3 +1,8 @@
+.update-link,
+.remove-item {
+    cursor: pointer
+}
+
 .top-header {
     background: #262626;
 }
