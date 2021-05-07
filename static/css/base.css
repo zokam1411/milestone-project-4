@@ -9,6 +9,12 @@
 
 /*  */
 
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .update-link,
 .remove-item {
     cursor: pointer
