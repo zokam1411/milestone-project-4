@@ -64,6 +64,7 @@
 .hero-image {
   height: 56vh;
   background: url('/media/hero-image.jpg') no-repeat center center;
+  filter: brightness(40%);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -73,13 +74,21 @@
   justify-content: center;
 }
 
-.opaque-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+.hero-text-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-text-1 {
+    font-size: 80px;
+    font-weight: 200;
+    text-shadow: #000 -1px 0px, #000 0px 1px, #000 1px 0px, #000 0px -1px;
+}
+
+.hero-text-2 {
+    font-size: 40px;
 }
 
 /* membership section */
