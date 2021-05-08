@@ -43,8 +43,8 @@ a {
 
 #menu .nav-link {
     color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
     padding-bottom: 5px;
     font-weight: 600;
     font-size: 20px;
@@ -74,9 +74,9 @@ a {
 }
 
 .hero-image {
-    height: 56vh;
+    height: 58vh;
     background: url('/media/hero-image.jpg') no-repeat center center;
-    filter: brightness(30%);
+    filter: brightness(25%);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -142,6 +142,10 @@ a {
 /* ----------------------------------- Media query */
 
 @media (max-width: 768px) {
+
+    .logo img {
+        width: 100px;
+    }
     .hero-image {
         height: 30vh;
     }

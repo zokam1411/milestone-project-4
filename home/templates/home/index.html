@@ -7,17 +7,18 @@ active
 
 {% block bottom_header %}
 <!-- Bottom header -->
-<header class="bottom-header mt-2 mb-2">
+<header class="bottom-header mt-1 mb-1">
     <div class="container">
         <div class="row">
-            <div class="logo col-12 text-center text-md-left col-md-3 mt-2 mb-2">
+            <div class="logo col-4 col-md-3 mt-1 mb-1">
                 <a href="{% url 'home' %}">
                     <img src="../media/logo.png" alt="FFRCCC logo">
                 </a>
             </div>
-            <div class="col-12 text-center col-md-9 my-auto d-none d-sm-block">
-                <h1 class="mt-2">Check out our online store!</h1>
-                <a href="{% url 'products' %}" class="btn btn-outline-danger btn-lg fw-bold mb-2 text-uppercase">Visit
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h1 class="d-none d-md-block">Check out our online store!</h1>
+                <h6 class="d-md-none"><strong>Check out our online store!</strong></h6>
+                <a href="{% url 'products' %}" class="btn btn-outline-danger fw-bold text-uppercase">Visit
                     store</a>
             </div>
         </div>
