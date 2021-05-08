@@ -84,26 +84,33 @@
             </button>
 
             {% include 'includes/mobile-nav.html' %}
-            {% include 'includes/main-nav.html' %}
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div id="menu" class="navbar-nav mx-auto">
+                    <a class="nav-item nav-link mx-auto {% block nav_index%}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item nav-link mx-auto" href="#">Blog</a>
+                    <a class="nav-item nav-link mx-auto" href="#">Membership</a>
+                    <a class="nav-item nav-link mx-auto" href="{% url 'products' %}">Store</a>
+                </div>
+            </div>
 
         </div>
     </nav>
     {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block content %}
@@ -126,7 +133,7 @@
 
     {% block postloadjs %}
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.toast').toast('show');
         });
     </script>
