@@ -67,6 +67,10 @@ a {
     color: #fff;
 }
 
+.logo img {
+    width: 150px;
+}
+
 /* ----------------------------------- index.html */
 /* hero section */
 .hero-section {
@@ -74,7 +78,7 @@ a {
 }
 
 .hero-image {
-    height: 58vh;
+    height: 65vh;
     background: url('/media/hero-image.jpg') no-repeat center center;
     filter: brightness(25%);
     -webkit-background-size: cover;
