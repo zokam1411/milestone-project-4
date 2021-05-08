@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    background: #f1f1f1;
 }
 
 /* ------------------------------- bootstrap toasts */
@@ -30,7 +31,7 @@ body {
     background: #262626;
 }
 
- a {
+a {
     text-decoration: none;
 }
 
@@ -57,6 +58,7 @@ body {
 .navbar button {
     color: #fff;
 }
+
 .fa-bars {
     color: #fff;
 }
@@ -64,20 +66,20 @@ body {
 /* ----------------------------------- index.html */
 /* hero section */
 .hero-section {
-  position: relative;
+    position: relative;
 }
 
 .hero-image {
-  height: 56vh;
-  background: url('/media/hero-image.jpg') no-repeat center center;
-  filter: brightness(40%);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 56vh;
+    background: url('/media/hero-image.jpg') no-repeat center center;
+    filter: brightness(30%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-text-wrapper {
@@ -103,12 +105,6 @@ body {
     color: #fff;
 }
 
-@media (max-width: 768px) {
-    .hero-image {
-        height: 30vh;
-    }
-}
-
 /* ----------------------------------- products.html */
 
 .img-holder {
@@ -122,7 +118,7 @@ body {
     transition: .5s;
 }
 
-.card:hover >  .img-holder img {
+.card:hover>.img-holder img {
     transform: scale(1.1);
 }
 
@@ -137,4 +133,20 @@ body {
 
 .text-start {
     padding-left: 5px;
+}
+
+/* ----------------------------------- Media query */
+
+@media (max-width: 768px) {
+    .hero-image {
+        height: 30vh;
+    }
+
+    .hero-text-1 {
+        font-size: 40px;
+    }
+
+    .hero-text-2 {
+        font-size: 20px;
+    }
 }
