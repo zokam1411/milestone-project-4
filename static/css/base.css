@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
@@ -83,7 +89,7 @@
 
 .hero-text-1 {
     font-size: 80px;
-    font-weight: 200;
+    font-weight: 300;
     text-shadow: #000 -1px 0px, #000 0px 1px, #000 1px 0px, #000 0px -1px;
 }
 
