@@ -16,6 +16,7 @@ def all_products(request):
     query = None
     sort = None
     direction = None
+    current_category = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -32,9 +33,8 @@ def all_products(request):
             products = products.order_by(sortkey)
 
         if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            current_category = request.GET['category']
+            products = products.filter(category__name=current_category)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -51,8 +51,9 @@ def all_products(request):
 
     context = {
         'products': products,
+        'categories': categories,
         'search_term': query,
-        'current_categories': categories,
+        'current_category': current_category,
         'current_sorting': current_sorting,
     }
 

@@ -34,53 +34,98 @@
     </div>
 </div>
 
-<!-- Products section -->
-<section class="products-section">
-    <div class="container">
-        <div class="row">
-            <ul>
-                {% for c in current_categories %}
-                <li><a href="{% url 'products' %}?category={{ c.name }}">{{ c.friendly_name }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="row">
-            {% for product in products %}
-            <div class="col-6 col-md-6 col-lg-3 text-center mt-3">
-                <div class="card h-100">
-                    {% if product.category %}
-                    <div class="small text-start">
-                        <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                            </i>{{ product.category.friendly_name }}
-                        </a>
-                    </div>
-                    {% endif %}
-                    <div class="img-holder">
-                        {% if product.image %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img src="/media/{{ product.image }}" class="card-img-top" alt="{{product.name}}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img src="/media/no_image.jpg" class="card-img-top" alt="{{product.name}}">
-                            {% endif %}
-                        </a>
-                    </div>
-                    </a>
-                    <div class="card-body">
-                        <a href="{% url 'product_detail' product.id %}">
-                            <h6 class="card-title">{{product.name}}</h6>
-                        </a>
-                        <p class="card-text">{{product.price}}</p>
-                    </div>
-                    <div>
-                        <a href="#" class="btn btn-primary mb-3">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% if current_category != None %}
+            <p>
+                <a href="{% url 'products'%}?category={{ current_category }}">
+                    <span class="product_count">
+                        <strong>{{ current_category.capitalize }}</strong> | {{ products|length }} products
+                    </span>
+                </a>
+            </p>
+            {% else %}
+            <p class="product_count">
+                All products{{ products|length }} products {% if search_term %} found for
+                <strong>"{{ search_term }}"</strong>{% endif %}
+            </p>
+            {% endif %}
         </div>
     </div>
+</div>
+
+<!-- Categories section -->
+<section class="categories-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="category-main bg-danger text-white text-uppercase pt-3 pb-3 text-center">
+                    <h6 class="m-0"><strong>Categories</strong></h6>
+                </div>
+                {% for category in categories %}
+                <a href="{% url 'products' %}?category={{category.name}}">
+                    <div class="pt-2 pb-2 current-category text-success">
+                        <p class="ms-1 mb-0">{{ category.friendly_name }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+                <a href="{% url 'products' %}">
+                    <div class="pt-2 pb-2 current-category text-center bg-secondary text-white">
+                        <p class="ms-1 mb-0">All products <small>({{ products.count }})</small></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-9 my-auto text-center">
+                <div class="row">
+                    {% for c in current_categories %}
+                    <h5 class="text-start"><strong>{{c.friendly_name}}</strong></h5>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-6 col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            {% if product.category %}
+                            <div class="small text-start">
+                                <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                                    </i>{{ product.category.friendly_name }}
+                                </a>
+                            </div>
+                            {% endif %}
+                            <div class="img-holder">
+                                {% if product.image %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img src="/media/{{ product.image }}" class="card-img-top" alt="{{product.name}}">
+                                </a>
+                                {% else %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img src="/media/no_image.jpg" class="card-img-top" alt="{{product.name}}">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            </a>
+                            <div class="card-body">
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <h6 class="card-title">{{product.name}}</h6>
+                                </a>
+                                <p class="card-text">{{product.price}}</p>
+                            </div>
+                            <div>
+                                <a href="#" class="btn btn-primary mb-3">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products section -->
+<section class="products-section">
+
 </section>
 {% endblock %}
 
