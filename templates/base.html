@@ -89,7 +89,7 @@
                     <a class="nav-item nav-link mx-auto {% block nav_index%}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
                     <a class="nav-item nav-link mx-auto" href="#">Blog</a>
                     <a class="nav-item nav-link mx-auto" href="#">Membership</a>
-                    <a class="nav-item nav-link mx-auto" href="{% url 'shop' %}">Shop</a>
+                    <a class="nav-item nav-link mx-auto {% block nav_shop %}{% endblock %}" href="{% url 'shop' %}">Shop</a>
                 </div>
             </div>
 
