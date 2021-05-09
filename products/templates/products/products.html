@@ -85,41 +85,31 @@
                 </div>
                 <!-- Products -->
                 <div class="row">
-                    {% for c in current_categories %}
-                    <h5 class="text-start"><strong>{{c.friendly_name}}</strong></h5>
-                    {% endfor %}
-                </div>
-                <div class="row">
                     {% for product in products %}
                     <div class="col-6 col-md-6 col-lg-3 mb-3">
                         <div class="card h-100">
-                            {% if product.category %}
-                            <div class="small text-start">
-                                <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                    </i>{{ product.category.friendly_name }}
-                                </a>
-                            </div>
-                            {% endif %}
                             <div class="img-holder">
                                 {% if product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img src="/media/{{ product.image }}" class="card-img-top" alt="{{product.name}}">
+                                    <img src="/media/{{ product.image }}" alt="{{product.name}}">
                                 </a>
                                 {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img src="/media/no_image.jpg" class="card-img-top" alt="{{product.name}}">
+                                    <img src="/media/no_image.jpg" alt="{{product.name}}">
                                     {% endif %}
                                 </a>
                             </div>
                             </a>
                             <div class="card-body">
-                                <a href="{% url 'product_detail' product.id %}">
-                                    <h6 class="card-title">{{product.name}}</h6>
+                                <a href="{% url 'product_detail' product.id %}" class="text-dark">
+                                    <p class="text-dark card-title m-0">{{product.name}}</hp>
                                 </a>
-                                <p class="card-text">{{product.price}}</p>
+                            </div>
+                            <div class="card-price">
+                                <p><strong>&euro;{{product.price}}</strong></p>
                             </div>
                             <div>
-                                <a href="#" class="btn btn-primary mb-3">Add to cart</a>
+                                <a href="#" class="btn btn-success mb-3">Add to cart</a>
                             </div>
                         </div>
                     </div>

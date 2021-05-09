@@ -116,14 +116,14 @@ a {
 /* ----------------------------------- products.html */
 
 .img-holder {
-    height: 140px;
+    height: 90px;
     margin: 15px;
 }
 
 .img-holder img {
-    height: 140px;
+    height: 90px;
     width: 100%;
-    transition: .5s;
+    transition: .7s;
 }
 
 .card:hover>.img-holder img {
