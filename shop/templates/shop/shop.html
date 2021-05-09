@@ -6,16 +6,22 @@ active
 {% endblock %}
 
 {% block content %}
-<section class="shop-welcome">
-    <div class="container text-center">
+<section class="pt-3 pb-3">
+    <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1 class="mt-2">Welcome to the FFRCCC's online shop!</h1>
-                <h2 class="mt-2">What are you looking for?</h2>
+            <div class="logo col-4 col-md-3 text-center">
+                <a href="{% url 'home' %}">
+                    <img src="../media/logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h1 class="d-none d-md-block">Welcome to the FFRCCC's online shop!</h1>
+                <h6 class="d-md-none"><strong>Welcome to the FFRCCC's online shop!</strong></h6>
             </div>
         </div>
     </div>
 </section>
+
 
 {% include 'products/includes/search-section.html' %}
 
@@ -30,39 +36,42 @@ active
                 {% for c in current_categories %}
                 <a href="{% url 'products' %}?category={{c.name}}">
                     <div class="pt-2 pb-2 current-category text-success">
-                        <p class="ms-1 mb-0">{{ c.friendly_name }}</p>
+                        <p class="ms-1 mb-0">{{ c.friendly_name }} <small>
+
+                            </small></p>
                     </div>
                 </a>
                 {% endfor %}
                 <a href="{% url 'products' %}">
                     <div class="pt-2 pb-2 current-category text-center bg-secondary text-white">
-                        <p class="ms-1 mb-0">All products <small>({{ products|length }})</small></p>
+                        <p class="ms-1 mb-0">All products <small>({{ products.count }})</small></p>
                     </div>
                 </a>
             </div>
-            <div class="col-12 col-md-9">
-                Hello
+            <div class="d-none d-md-block col-md-9 my-auto text-center">
+                <h2>View our full products range:</h2>
+                <a href="{% url 'products' %}" class="btn btn-success btn-lg">Shop Now</a>
             </div>
         </div>
     </div>
 </section>
 
-<section>
+<section class="info-section pt-3 pb-3 text-center text-white mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-3 info">
                 <i class="far fa-clock d-block fa-3x"></i>
                 <h4><strong>Same day shipping</strong></h4>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-3 info">
                 <i class="fas fa-headset d-block fa-3x"></i>
                 <h4><strong>Product support</strong></h4>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="d-none d-md-block col-md-3 info">
                 <i class="fas fa-undo d-block fa-3x"></i>
                 <h4><strong>Easy returns</strong></h4>
             </div>
-            <div class="col-6 col-md-3">
+            <div class="d-none d-md-block col-md-3">
                 <i class="fas fa-euro-sign d-block fa-3x"></i>
                 <h4><strong>Great prices</strong></h4>
             </div>

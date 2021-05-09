@@ -147,8 +147,17 @@ a {
 
 .current-category {
     border-left: 1px solid rgb(173, 171, 171);
-    border-right: 1px solid rgb(173, 171, 171);;
-    border-bottom: 1px solid rgb(173, 171, 171);;
+    border-right: 1px solid rgb(173, 171, 171);
+    border-bottom: 1px solid rgb(173, 171, 171);
+}
+
+.info {
+    border-right: 1px solid rgb(173, 171, 171);
+}
+
+.info-section h4,
+.info-section i {
+    color: rgb(173, 171, 171);
 }
 
 /* ----------------------------------- Media query */
