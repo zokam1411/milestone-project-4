@@ -1,6 +1,7 @@
 <!-- Search section -->
-<section class="search-section text-center">
-    <div class="container col-12 col-lg-4 mt-2">
+<section class="search-section text-center mt-4 mb-4">
+    <div class="container col-12 col-lg-4">
+        <h3>Search in shop</h3>
         <div class="row">
             <form method="GET" action="{% url 'products' %}">
                 <div class="input-group w-100">
@@ -15,20 +16,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-        <!-- Categories -->
-        <div class="row">
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="{% url 'products' %}">All products</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="{% url 'products' %}?category=accessories">Accessories</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="{% url 'products' %}?category=motors">Motors</a>
-                </li>
-            </ul>
         </div>
     </div>
 </section>
