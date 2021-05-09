@@ -33,12 +33,10 @@ active
                 <div class="category-main bg-danger text-white text-uppercase pt-3 pb-3 text-center">
                     <h6 class="m-0"><strong>Categories</strong></h6>
                 </div>
-                {% for c in current_categories %}
-                <a href="{% url 'products' %}?category={{c.name}}">
+                {% for category in categories %}
+                <a href="{% url 'products' %}?category={{category.name}}">
                     <div class="pt-2 pb-2 current-category text-success">
-                        <p class="ms-1 mb-0">{{ c.friendly_name }} <small>
-
-                            </small></p>
+                        <p class="ms-1 mb-0">{{ category.friendly_name }}</p>
                     </div>
                 </a>
                 {% endfor %}

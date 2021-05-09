@@ -12,7 +12,7 @@ def shop(request):
 
     context = {
         'products': products,
-        'current_categories': categories,
+        'categories': categories,
     }
 
     return render(request, 'shop/shop.html', context)
