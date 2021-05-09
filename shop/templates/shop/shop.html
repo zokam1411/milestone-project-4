@@ -11,8 +11,44 @@ active
         <div class="row">
             <div class="col-12">
                 <h1 class="mt-2">Welcome to the FFRCCC's online shop!</h1>
+                <h2 class="mt-2">What are you looking for?</h2>
             </div>
         </div>
+    </div>
+</section>
+
+{% include 'products/includes/search-section.html' %}
+
+<!-- Categories section -->
+<section class="categories-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="category-main bg-danger text-white text-uppercase pt-3 pb-3 text-center">
+                    <h6 class="m-0"><strong>Categories</strong></h6>
+                </div>
+                {% for c in current_categories %}
+                <a href="{% url 'products' %}?category={{c.name}}">
+                    <div class="pt-2 pb-2 current-category text-success">
+                        <p class="ms-1 mb-0">{{ c.friendly_name }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+                <a href="{% url 'products' %}">
+                    <div class="pt-2 pb-2 current-category text-center bg-secondary text-white">
+                        <p class="ms-1 mb-0">All products <small>({{ products|length }})</small></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-9">
+                Hello
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
         <div class="row">
             <div class="col-6 col-md-3">
                 <i class="far fa-clock d-block fa-3x"></i>
