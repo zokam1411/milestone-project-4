@@ -88,7 +88,7 @@
                     {% for product in products %}
                     <div class="col-6 col-md-6 col-lg-3 mb-3">
                         <div class="card h-100 rounded-0">
-                            <div class="img-holder">
+                            <div class="img-holder mt-2 mb-1">
                                 {% if product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
                                     <img src="/media/{{ product.image }}" alt="{{product.name}}">
@@ -100,9 +100,9 @@
                                 </a>
                             </div>
                             </a>
-                            <div class="card-body">
+                            <div class="card-body p-0 ms-1 me-1">
                                 <a href="{% url 'product_detail' product.id %}" class="text-dark">
-                                    <p class="text-dark card-title m-0">{{product.name}}</hp>
+                                    <p class="text-dark card-title">{{product.name}}</hp>
                                 </a>
                             </div>
                             <div class="card-price">
@@ -143,7 +143,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="submit" class="btn btn-success rounded-0 text-uppercase mt-5"
+                                        <input type="submit" class="btn btn-success rounded-0 text-uppercase"
                                             value="Add to Bag">
                                     </div>
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
