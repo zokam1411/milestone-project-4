@@ -135,4 +135,32 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+<!-- JS tabs functionality -->
+<script type="text/javascript">
+    const descriptionLink = document.getElementById("description");
+    const reviewsLink = document.getElementById("reviews");
+    const descriptionTab = document.getElementById("description-tab")
+    const reviewsTab = document.getElementById("reviews-tab")
+
+    function start() {
+        reviewsTab.style.display = "none"
+    }
+
+    descriptionLink.addEventListener("click", function () {
+        descriptionLink.classList.add("bg-gray")
+        descriptionTab.style.display = "block"
+        reviewsLink.classList.remove("bg-gray")
+        reviewsTab.style.display = "none"
+    });
+
+    reviewsLink.addEventListener("click", function () {
+        reviews.classList.add("bg-gray")
+        reviewsTab.style.display = "block"
+        descriptionLink.classList.remove("bg-gray")
+        descriptionTab.style.display = "none"
+    });
+
+    window.onload = start;
+
+</script>
 {% endblock %}
