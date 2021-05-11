@@ -15,7 +15,8 @@
     </div>
     <div class="row">
         {% if bag_items %}
-        <div class="table-responsive">
+        <!-- Desktop view -->
+        <div class="table-responsive d-none d-lg-block col-lg-10">
             <table class="table">
                 <thead class="bg-list">
                     <tr">
@@ -23,16 +24,21 @@
                         <th scope="col">Details</th>
                         <th scope="col" class="text-center">Qty</th>
                         <th scope="col" class="text-center">Subtotal</th>
-                    </tr>
+                        <th scope="col" class="text-center">Delete</th>
+                        </tr>
                 </thead>
 
                 {% for item in bag_items %}
                 <tr>
                     <td class="col-auto text-center bag-img">
-                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                        <a href="{% url 'product_detail' item.item_id %}">
+                            <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                        </a>
                     </td>
                     <td class="py-3">
-                        <h6 class="my-0"><strong>{{ item.product.name }}</strong></h6>
+                        <a href="{% url 'product_detail' item.item_id %}">
+                            <h6 class="my-0 text-dark underline"><strong>{{ item.product.name }}</strong></h6>
+                        </a>
                         {% if item.product.turns %}
                         <p class="my-0">Turns: <strong>{{ item.turns }}</strong></p>
                         {% endif %}
@@ -42,39 +48,45 @@
                     <td class="col-auto text-center">
                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                             {% csrf_token %}
-                            <div class="form-group">
+                            <div class="col-auto">
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-sm btn-success rounded-0"
-                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                            <span>
-                                                <i class="fas fa-minus fa-sm"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
-                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
-                                        id="id_qty_{{ item.item_id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty btn btn-sm btn-success rounded-0"
-                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                            <span>
-                                                <i class="fas fa-plus fa-sm"></i>
-                                            </span>
-                                        </button>
-                                    </div>
+                                    <span>
+                                        <div class="input-group-prepend">
+                                            <button class="decrement-qty btn btn-sm bg.transparent"
+                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-minus text-success"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </span>
+                                    <input class="form-control qty_input ps-3 pe-3 pt-0 pb-0 mb-1 text-center"
+                                        type="number" name="quantity" value="{{ item.quantity }}" min="1" max="9"
+                                        data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                    <span>
+                                        <div class="input-group-append">
+                                            <button class="increment-qty btn btn-sm bg-transparent"
+                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus text-success"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </span>
                                     {% if item.product.turns %}
                                     <input type="hidden" name="product_turns" value="{{ item.turns }}">
                                     {% endif %}
                                 </div>
                             </div>
                         </form>
-                        <a class="update-link text-info"><small>Update</small></a>
-                        <a class="remove-item text-danger text-end" id="remove_{{ item.item_id }}"
-                            data-product_turns="{{ item.turns }}"><small>Remove</small></a>
+                        <a class="update-link text-success underline"><small>Update Qty</small></a>
                     </td>
                     <td class="col-auto text-center">
                         <p class="my-0">&euro;{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    </td>
+                    <td class="col-auto text-center">
+                        <a class="remove-item text-danger" id="remove_{{ item.item_id }}"
+                            data-product_turns="{{ item.turns }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -128,21 +140,24 @@
 
 <script type="text/javascript">
     // Update quantity on click
-    $('.update-link').click(function(e) {
+    $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
 
     // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    $('.remove-item').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var turns = $(this).data('product_turns');
         var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_turns': turns};
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'product_turns': turns
+        };
 
         $.post(url, data)
-            .done(function() {
+            .done(function () {
                 location.reload();
             });
     })
