@@ -158,15 +158,21 @@ a {
 
 /* ----------------------------------- Product details */
 
-.product-nav {
-    border-bottom: 3px solid gray;
+.product-nav{
     font-weight: 300;
     font-size: 20px;
+    border-bottom: 4px solid #dadada;
+
 }
+
 
 .product-nav li:hover {
     cursor: pointer;
-    background: gray;
+    background: #dadada;
+}
+
+.bg-list {
+    background: #dadada;
 }
 
 

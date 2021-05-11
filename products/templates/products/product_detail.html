@@ -108,12 +108,12 @@
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         {% endwith %}
                     </form>
-                    <!-- Description -->
-                    <ul class="product-nav list-inline mt-3">
-                        <li class="list-inline-item bg-gray" id="description">
+                    <!-- Description, Reviews -->
+                    <ul class="product-nav list-inline mt-5 d-flex">
+                        <li class="list-inline-item m-0 p-2 bg-list g-0" id="description">
                             Description
                         </li>
-                        <li class="list-inline-item" id="reviews">
+                        <li class="list-inline-item m-0 p-2 g-0" id="reviews">
                             Reviews
                         </li>
                     </ul>
@@ -125,6 +125,7 @@
                             <p>I like the stock</p>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </div>
         </div>
@@ -147,16 +148,16 @@
     }
 
     descriptionLink.addEventListener("click", function () {
-        descriptionLink.classList.add("bg-gray")
+        descriptionLink.classList.add("bg-list")
         descriptionTab.style.display = "block"
-        reviewsLink.classList.remove("bg-gray")
+        reviewsLink.classList.remove("bg-list")
         reviewsTab.style.display = "none"
     });
 
     reviewsLink.addEventListener("click", function () {
-        reviews.classList.add("bg-gray")
+        reviews.classList.add("bg-list")
         reviewsTab.style.display = "block"
-        descriptionLink.classList.remove("bg-gray")
+        descriptionLink.classList.remove("bg-list")
         descriptionTab.style.display = "none"
     });
 
