@@ -108,7 +108,23 @@
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         {% endwith %}
                     </form>
-                    <p class="mt-3">{{ product.description }}</p>
+                    <!-- Description -->
+                    <ul class="product-nav list-inline mt-3">
+                        <li class="list-inline-item bg-gray" id="description">
+                            Description
+                        </li>
+                        <li class="list-inline-item" id="reviews">
+                            Reviews
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="description-tab">
+                            <p>{{ product.description }}</p>
+                        </div>
+                        <div id="reviews-tab">
+                            <p>I like the stock</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
