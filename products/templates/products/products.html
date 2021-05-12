@@ -20,10 +20,15 @@
 <section class="categories-section">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mb-5">
                 <div class="category-main bg-danger text-white text-uppercase pt-3 pb-3 text-center">
                     <h6 class="m-0"><strong>Categories</strong></h6>
                 </div>
+                <a href="{% url 'products' %}">
+                    <div class="pt-2 pb-2 current-category bg-gray text-center underline text-white">
+                        <p class="ms-1 mb-0">All products</p>
+                    </div>
+                </a>
                 {% for category in categories %}
                 {% if category.name == current_category %}
                 <a href="{% url 'products' %}?category={{category.name}}">
@@ -39,11 +44,6 @@
                 </a>
                 {% endif %}
                 {% endfor %}
-                <a href="{% url 'products' %}">
-                    <div class="mt-3 pt-2 pb-2 current-category text-center bg-secondary text-white">
-                        <p class="ms-1 mb-0">All products</p>
-                    </div>
-                </a>
             </div>
             <!-- Category count -->
             <div class="col-md-9 my-auto text-center">
