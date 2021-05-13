@@ -5,6 +5,7 @@ from .forms import OrderForm
 
 # Create your views here.
 
+
 def checkout(request):
     bag = request.session.get('bag', {})
     if not bag:
@@ -18,3 +19,4 @@ def checkout(request):
     }
 
     return render(request, template, context)
+    
