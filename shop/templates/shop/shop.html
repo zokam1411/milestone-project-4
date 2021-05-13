@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block nav_shop %}
-active
-{% endblock %}
-
-{% block content %}
+{% block bottom_header %}
 <section class="pt-3 pb-3">
     <div class="container">
         <div class="row">
@@ -21,18 +17,47 @@ active
         </div>
     </div>
 </section>
+{% endblock %}
 
+{% block nav_shop %}
+active
+{% endblock %}
+
+{% block content %}
 
 {% include 'products/includes/search-section.html' %}
+
+<div class="categories-section">
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+
+            <div class="col-12 col-md-3 col-lg-4">
+
+                <div class="pt-2 pb-2 current-category text-success">
+                    <p class="ms-1 mb-0">{{ category.friendly_name }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+</div>
 
 <!-- Categories section -->
 <section class="categories-section">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-4 col-lg-3">
                 <div class="category-main bg-danger text-white text-uppercase pt-3 pb-3 text-center">
                     <h6 class="m-0"><strong>Categories</strong></h6>
                 </div>
+                <a href="{% url 'products' %}">
+                    <div class="pt-2 pb-2 current-category bg-gray text-center underline text-white">
+                        <p class="ms-1 mb-0">All products</p>
+                    </div>
+                </a>
                 {% for category in categories %}
                 <a href="{% url 'products' %}?category={{category.name}}">
                     <div class="pt-2 pb-2 current-category text-success">
@@ -40,13 +65,8 @@ active
                     </div>
                 </a>
                 {% endfor %}
-                <a href="{% url 'products' %}">
-                    <div class="pt-2 pb-2 current-category text-center bg-secondary text-white">
-                        <p class="ms-1 mb-0">All products <small>({{ products.count }})</small></p>
-                    </div>
-                </a>
             </div>
-            <div class="d-none d-md-block col-md-9 my-auto text-center">
+            <div class="d-none d-md-block col-md-8 col-lg-9 my-auto text-center">
                 <h2>View our full products range:</h2>
                 <a href="{% url 'products' %}" class="btn btn-success btn-lg">Shop Now</a>
             </div>
