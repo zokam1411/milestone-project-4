@@ -3,162 +3,148 @@
 {% load bag_tools %}
 
 {% block content %}
-
 <div class="container">
     <div class="row mt-3 mb-3">
-        <div class="col">
-            <h2 class="m-0">
-                <i class="fas fa-shopping-cart"></i> Your Shopping Cart
-            </h2>
+        <div class="col-12">
+            <h2 class="m-0"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h2>
         </div>
     </div>
-    {% if bag_items %}
+</div>
+<!-- Items in bag -->
+{% if bag_items %}
+<div class="container">
     <div class="row">
-        <!-- Desktop view -->
-        <div class="table-responsive d-none d-md-block col-md-12">
-            <table class="table">
+        <div class="col-12 col-lg-9">
+            <table class="table align-middle">
                 <thead class="bg-list">
-                    <tr">
+                    <tr>
                         <th scope="col" class="text-center">Product</th>
                         <th scope="col">Details</th>
                         <th scope="col" class="text-center">Qty</th>
-                        <th scope="col" class="text-center">Subtotal</th>
-                        <th scope="col" class="text-center">Delete</th>
-                        </tr>
+                        <th scope="col" class="text-center d-none d-md-table-cell">Subtotal</th>
+                    </tr>
                 </thead>
                 {% for item in bag_items %}
                 <tr>
-                    <td class="col-auto text-center bag-img">
-                        <a href="{% url 'product_detail' item.item_id %}">
-                            <img class="img-fluid rounded" src="{{ item.product.image.url }}">
-                        </a>
+                    <td class="text-center col-auto">
+                        <div class="bag-img">
+                            <a href="{% url 'product_detail' item.item_id %}">
+                                <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                            </a>
+                        </div>
+                        <div class="remove pt-2">
+                            <a class="remove-item text-danger" id="remove_{{ item.item_id }}"
+                                data-product_turns="{{ item.turns }}"><i class="fas fa-trash-alt"></i></a>
+                        </div>
                     </td>
-                    <td class="py-3">
+                    <td>
                         <a href="{% url 'product_detail' item.item_id %}">
                             <h6 class="my-0 text-dark underline"><strong>{{ item.product.name }}</strong></h6>
                         </a>
+                        <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                         {% if item.product.turns %}
                         <p class="my-0">Turns: <strong>{{ item.turns }}</strong></p>
                         {% endif %}
-                        <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
-                        <p class="my-0">${{ item.product.price }}</p>
+                        <p class="my-0">&euro;{{ item.product.price }}</p>
                     </td>
-                    <td class="col-auto text-center">
+                    <td class="text-center">
                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                             {% csrf_token %}
-                            <div class="col-auto">
-                                <div class="input-group">
-                                    <span>
-                                        <div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-sm bg.transparent"
-                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                <span class="icon">
-                                                    <i class="fas fa-minus text-success"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </span>
-                                    <input class="form-control qty_input ps-3 pe-3 pt-0 pb-0 mb-1 text-center"
-                                        type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                        data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                    <span>
-                                        <div class="input-group-append">
-                                            <button class="increment-qty btn btn-sm bg-transparent"
-                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                <span class="icon">
-                                                    <i class="fas fa-plus text-success"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </span>
-                                    {% if item.product.turns %}
-                                    <input type="hidden" name="product_turns" value="{{ item.turns }}">
-                                    {% endif %}
-                                </div>
+                            <div class="input-group mx-auto">
+                                <span>
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-sm bg.transparent"
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus text-success"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </span>
+                                <input class="form-control qty_input text-center pt-0 pb-0 mb-1" type="number"
+                                    name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                    data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                <span>
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-sm bg-transparent"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus text-success"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </span>
+                                {% if item.product.turns %}
+                                <input type="hidden" name="product_turns" value="{{ item.turns }}">
+                                {% endif %}
                             </div>
                         </form>
                         <a class="update-link text-success underline d-none" id="update{{ item.item_id }}"><small>Update
-                                Qty</small></a>
+                                <span><i class="fas fa-shopping-cart"></i></span></small></a>
                     </td>
-                    <td class="col-auto text-center">
+                    <td class="text-center d-none d-md-table-cell">
                         <p class="my-0">&euro;{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     </td>
-                    <td class="col-auto text-center">
-                        <a class="remove-item text-danger" id="remove_{{ item.item_id }}"
-                            data-product_turns="{{ item.turns }}"><i class="fas fa-trash-alt"></i></a>
-                    </td>
                 </tr>
+                {% endfor %}
             </table>
-            {% endfor %}
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <a href="{% url 'products' %}" class="btn btn-outline-success btn-lg">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Keep Shopping</span>
-                    </a>
-                </div>
-                <div class="col-12 col-md-6 text-end">
-                    <h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
-                    <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
-                    <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-                    <a href="" class="btn btn-success btn-lg">
-                        <span class="text-uppercase">Secure Checkout</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </a>
-                    <!-- {% if free_delivery_delta > 0 %}
-                    <p class="mb-1 text-danger">
-                        You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong>
-                        more!
-                    </p>
-                    {% endif %} -->
-                </div>
+            <div class="row mb-3">
+                <a href="{% url 'products' %}" class="text-success">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
             </div>
         </div>
+        <!-- Summary -->
+        
     </div>
     {% else %}
-    <div class="row">
-        <div class="alert alert-danger">
-            <h2>Cart Empty</h2>
-            <p class="lead mb-0">Your cart contains no items.</p>
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-danger">
+                <h2>Cart Empty</h2>
+                <p class="lead mb-0">Your cart contains no items.</p>
+            </div>
+            <a href="{% url 'products' %}" class="text-success">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
         </div>
-        <a href="{% url 'products' %}">Keep Shopping</a>
     </div>
     {% endif %}
-</div>
+    {% endblock %}
 
-{% endblock %}
+    {% block postloadjs %}
+    {{ block.super }}
+    {% include 'products/includes/quantity_input_script.html' %}
 
-{% block postloadjs %}
-{{ block.super }}
-{% include 'products/includes/quantity_input_script.html' %}
+    <script type="text/javascript">
+        // Update quantity on click
+        $('.update-link').click(function (e) {
+            var form = $(this).prev('.update-form');
+            form.submit();
+        })
 
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function (e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
+        // Remove item and reload on click
+        $('.remove-item').click(function (e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var turns = $(this).data('product_turns');
+            var url = `/bag/remove/${itemId}/`;
+            var data = {
+                'csrfmiddlewaretoken': csrfToken,
+                'product_turns': turns
+            };
 
-    // Remove item and reload on click
-    $('.remove-item').click(function (e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var turns = $(this).data('product_turns');
-        var url = `/bag/remove/${itemId}/`;
-        var data = {
-            'csrfmiddlewaretoken': csrfToken,
-            'product_turns': turns
-        };
+            $.post(url, data)
+                .done(function () {
+                    location.reload();
+                });
+        })
+    </script>
 
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
-</script>
-
-{% endblock %}
+    {% endblock %}
