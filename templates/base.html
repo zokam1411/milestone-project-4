@@ -86,10 +86,12 @@
             {% include 'includes/mobile-nav.html' %}
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div id="menu" class="navbar-nav mx-auto">
-                    <a class="nav-item nav-link mx-auto {% block nav_index%}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item nav-link mx-auto {% block nav_index%}{% endblock %}" aria-current="page"
+                        href="{% url 'home' %}">Home</a>
                     <a class="nav-item nav-link mx-auto" href="#">Blog</a>
                     <a class="nav-item nav-link mx-auto" href="#">Membership</a>
-                    <a class="nav-item nav-link mx-auto {% block nav_shop %}{% endblock %}" href="{% url 'shop' %}">Shop</a>
+                    <a class="nav-item nav-link mx-auto {% block nav_shop %}{% endblock %}"
+                        href="{% url 'shop' %}">Shop</a>
                 </div>
             </div>
 
@@ -126,6 +128,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
     </script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+
     {% endblock %}
 
     {% block extra_js %}
