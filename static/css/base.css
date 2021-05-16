@@ -213,6 +213,20 @@ a {
     border-width: 85%;
 }
 
+/* Allauth forms */
+.allauth-form-inner-content h1,
+.allauth-form-inner-content p {
+    text-align: center;
+}
+
+.allauth-form-inner-content input {
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
 
 /* ----------------------------------- Media query */
 
