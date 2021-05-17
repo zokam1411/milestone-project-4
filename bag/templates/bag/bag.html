@@ -28,9 +28,15 @@
                 <tr>
                     <td class="text-center col-auto">
                         <div class="bag-img">
+                            {% if item.product.image %}
                             <a href="{% url 'product_detail' item.item_id %}">
-                                <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                                <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                             </a>
+                            {% else %}
+                            <a href="{% url 'product_detail' item.item_id %}">
+                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                            </a>
+                            {% endif %}
                         </div>
                         <div class="remove pt-2">
                             <a class="remove-item text-danger" id="remove_{{ item.item_id }}"
