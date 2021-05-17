@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="small mb-0">
-                                {{ item.product.name }}{% if item.product_size %} - Size {{ item.product.size|upper }}{% endif %}
+                                {{ item.product.name }}{% if item.product_turns %} - Turns {{ item.product.turns|upper }}{% endif %}
                             </p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
@@ -192,9 +192,18 @@
         </div>
         <div class="row">
 			<div class="col-12 col-lg-7 text-right">
-				<a href="{% url 'shop' %}" class="btn btn-success rounded-0 my-2">
+				{% if from_profile %}
+                    <a href="{% url 'profile' %}" class="btn btn-success rounded-0 my-2">
+                        <span class="icon mr-2">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back to Profile</span>
+                    </a>
+                {% else %}
+                    <a href="{% url 'shop' %}" class="btn btn-success rounded-0 my-2">
 					<span class="text-uppercase">Back to shop!</span>
-				</a>
+                    </a>
+                {% endif %}
 			</div>
 		</div>
     </div>
