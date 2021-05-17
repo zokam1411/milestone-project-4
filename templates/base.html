@@ -42,7 +42,7 @@
                             <ul class="dropdown-menu" aria-labelledby="my-account">
                                 <li class="text-center mb-2">Hello <strong>{{request.user}}</strong>!</li>
                                 {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item" href="#">Product Management</a></li>
+                                <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
                                 {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                                 <li><a href="{% url 'account_logout' %}" class="dropdown-item" href="#">Log Out</a>
