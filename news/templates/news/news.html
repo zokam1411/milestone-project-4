@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_news %}
+active
+{% endblock %}
+
+{% block bottom_header %}
+<!-- Bottom header -->
+<header class="bottom-header mt-1 mb-1">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
+                <a href="{% url 'home' %}">
+                    <img src="../media/logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h2 class="d-none d-sm-block"><strong>Welcome to the news pages for our club.</strong></h2>
+                <h5 class="d-sm-none"><strong>Welcome to the news pages for our club.</strong></h5>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- hero section -->
+<section class="text-center mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>News & Articles</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
