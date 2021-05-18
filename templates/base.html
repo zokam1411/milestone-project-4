@@ -91,7 +91,8 @@
                 <div id="menu" class="navbar-nav mx-auto">
                     <a class="nav-item nav-link mx-auto {% block nav_index%}{% endblock %}" aria-current="page"
                         href="{% url 'home' %}">Home</a>
-                    <a class="nav-item nav-link mx-auto" href="#">News</a>
+                    <a class="nav-item nav-link mx-auto {% block nav_news%}{% endblock %}" aria-current="page"
+                        href="{% url 'news' %}">News</a>
                     <a class="nav-item nav-link mx-auto" href="#">Membership</a>
                     <a class="nav-item nav-link mx-auto {% block nav_shop %}{% endblock %}"
                         href="{% url 'shop' %}">Shop</a>
