@@ -88,6 +88,21 @@ a {
     width: 150px;
 }
 
+/* Footer */
+footer {
+    border-top: 4px solid #007a47;
+    background: #1f2a34;
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #007a47;
+}
+
 /* ----------------------------------- index.html */
 /* hero section */
 .hero-section {
