@@ -36,4 +36,19 @@ active
         </div>
     </div>
 </section>
+<!-- News section -->
+<section class="news-section">
+    <div class="container">
+        {% for n in news %}
+        <div class="row mt-5">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <h2 class="m-0"><strong>{{ n.title }}</strong></h2>
+                <p class="text-secondary"><small>Posted on {{ n.date_created }} | by {{ n.author }}</small></p>
+                <p class="m-0">{{ n.sub_title }}</p>
+                <p><small>Last updated on {{ n.last_updated }}</small></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
