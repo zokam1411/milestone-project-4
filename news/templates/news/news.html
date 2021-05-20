@@ -31,6 +31,9 @@ active
         <div class="row">
             <div class="col-12">
                 <h1>News & Articles</h1>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'add_post' %}" class="btn btn-success rounded-0">ADD NEW POST</a>
+                {% endif %}
                 <hr>
             </div>
         </div>
