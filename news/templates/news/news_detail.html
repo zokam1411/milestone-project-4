@@ -25,14 +25,26 @@ active
 {% endblock %}
 
 {% block content %}
+<!-- Back to news -->
+<div class="site-nav mt-3 mb-3 pt-1 pb-1 bg-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'news' %}" class="text-success">&lt; BACK TO NEWS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <article>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
-                {{ post.title }}
-                {{ post.sub_title }}
+                <h2><strong>{{ post.title }}</strong></h2>
+                <p class="text-secondary"><small>Posted on <span id="date-created">{{ post.date_created }}</span> | by {{ post.author }}</small></p>
+                <p><strong>{{ post.introduction }}</strong></p>
                 {{ post.content|safe }}
-                {{ post.author }}
+                <p class="text-secondary"><small>Last updated on <span class="" id="last-updated">{{ post.last_updated }}</span></small></p>
             </div>
         </div>
     </div>
