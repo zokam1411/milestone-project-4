@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block nav_news %}
+active
+{% endblock %}
+
+{% block bottom_header %}
+<!-- Bottom header -->
+<header class="bottom-header mt-1 mb-1">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
+                <a href="{% url 'home' %}">
+                    <img src="{{ MEDIA_URL }}logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h2 class="d-none d-sm-block"><strong>Welcome to the news pages for our club.</strong></h2>
+                <h5 class="d-sm-none"><strong>Welcome to the news pages for our club.</strong></h5>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<!-- Back to news -->
+<div class="site-nav mt-3 mb-3 pt-1 pb-1 bg-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'news' %}" class="text-success">&lt; BACK TO NEWS</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- hero section -->
+<section class="text-center mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Edit post</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Add form -->
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-ms-2 col-lg-6 offset-lg-3">
+            <form method="POST" action="{% url 'edit_post' post.id %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                {{ field | as_crispy_field }}
+                {% endfor %}
+                <div class="text-right">
+                    <a class="btn btn-outline-danger rounded-0 text-uppecase" href="{% url 'news' %}">Cancel</a>
+                    <button class="btn btn-success rounded-0 text-uppercase" type="submit">Edit Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
