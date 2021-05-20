@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import News
 
 
@@ -14,4 +14,15 @@ def news(request):
     }
 
     return render(request, 'news/news.html', context)
-    
+
+
+def news_detail(request, post_id):
+    """ A view to show individual news """
+
+    post = get_object_or_404(News, pk=post_id)
+
+    context = {
+        'post': post,
+    }
+
+    return render(request, 'news/news_detail.html', context)
