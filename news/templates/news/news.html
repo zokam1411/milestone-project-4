@@ -39,14 +39,14 @@ active
 <!-- News section -->
 <section class="news-section">
     <div class="container">
-        {% for n in news %}
+        {% for post in news %}
         <div class="row mt-5">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                <a href="{% url 'news_detail' n.id %}">
-                    <h2 class="m-0 text-success underline"><strong>{{ n.title }}</strong></h2>
+                <a href="{% url 'post_detail' post.id %}">
+                    <h2 class="m-0 text-success underline"><strong>{{ post.title }}</strong></h2>
                 </a>
-                <p class="text-secondary"><small>Posted on {{ n.date_created }} | by {{ n.author }}</small></p>
-                <p>{{ n.introduction|slice:":200" }}...</p>
+                <p class="text-secondary"><small>Posted on {{ post.date_created }} | by {{ post.author }}</small></p>
+                <p>{{ post.introduction|slice:":200" }}...</p>
             </div>
         </div>
         {% endfor %}
