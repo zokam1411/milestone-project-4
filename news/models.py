@@ -19,11 +19,7 @@ class News(models.Model):
                              null=False,
                              blank=False,
                              )
-    introduction = models.CharField(max_length=250,
-                                    unique=True,
-                                    null=False,
-                                    blank=False,
-                                    )
+    introduction = models.TextField(null=False, blank=False,)
     content = models.TextField(null=False, blank=False,)
     last_updated = models.DateTimeField(auto_now=True)
 
