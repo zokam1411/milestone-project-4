@@ -43,11 +43,10 @@ active
         <div class="row mt-5">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 <a href="{% url 'news_detail' n.id %}">
-                    <h2 class="m-0"><strong>{{ n.title }}</strong></h2>
+                    <h2 class="m-0 text-success underline"><strong>{{ n.title }}</strong></h2>
                 </a>
                 <p class="text-secondary"><small>Posted on {{ n.date_created }} | by {{ n.author }}</small></p>
-                <p class="m-0">{{ n.introduction }}</p>
-                <p><small>Last updated on {{ n.last_updated }}</small></p>
+                <p>{{ n.introduction|slice:":200" }}...</p>
             </div>
         </div>
         {% endfor %}
