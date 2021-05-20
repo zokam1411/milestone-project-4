@@ -40,11 +40,19 @@ active
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
+                {% if request.user.is_superuser %}
+                <div class="ml-3">
+                    <a href="{% url 'edit_post' post.id %}">Edit</a> |
+                    <a class="text-danger" href="{% url 'delete_post' post.id %}">Delete</a>
+                </div>
+                {% endif %}
                 <h2><strong>{{ post.title }}</strong></h2>
-                <p class="text-secondary"><small>Posted on <span id="date-created">{{ post.date_created }}</span> | by {{ post.author }}</small></p>
+                <p class="text-secondary"><small>Posted on <span id="date-created">{{ post.date_created }}</span> | by
+                        {{ post.author }}</small></p>
                 <p><strong>{{ post.introduction }}</strong></p>
                 {{ post.content|safe }}
-                <p class="text-secondary"><small>Last updated on <span class="" id="last-updated">{{ post.last_updated }}</span></small></p>
+                <p class="text-secondary"><small>Last updated on <span class=""
+                            id="last-updated">{{ post.last_updated }}</span></small></p>
             </div>
         </div>
     </div>

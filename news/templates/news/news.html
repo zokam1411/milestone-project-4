@@ -45,6 +45,12 @@ active
         {% for post in news %}
         <div class="row mt-5">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                {% if request.user.is_superuser %}
+                <div class="ml-3">
+                    <a href="{% url 'edit_post' post.id %}">Edit</a> |
+                    <a class="text-danger" href="{% url 'delete_post' post.id %}">Delete</a>
+                </div>
+                {% endif %}
                 <a href="{% url 'post_detail' post.id %}">
                     <h2 class="m-0 text-success underline"><strong>{{ post.title }}</strong></h2>
                 </a>
