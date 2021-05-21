@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import News, Comment
-from .forms import NewsForm
+from .forms import NewsForm, CommentForm
 
 # Create your views here.
 
@@ -26,9 +26,25 @@ def post_detail(request, post_id):
     post = get_object_or_404(News, pk=post_id)
     comments = Comment.objects.filter(news=post)
 
+    comment = None
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.news = post
+            comment.comment_author = request.user
+            comment.save()
+            messages.success(request, 'Thank you for your comment')
+            return redirect(reverse('post_detail', args=[post.id]))
+    else:
+        comment_form = CommentForm()
+
     context = {
         'post': post,
+        'comment_form': comment_form,
         'comments': comments,
+        'comment': comment
     }
 
     return render(request, 'news/post_detail.html', context)
