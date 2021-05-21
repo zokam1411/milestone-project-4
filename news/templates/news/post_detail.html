@@ -39,7 +39,7 @@ active
 <article>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-8 offset-md-2">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 {% if request.user.is_superuser %}
                 <div class="ml-3">
                     <a href="{% url 'edit_post' post.id %}">Edit</a> |
@@ -51,41 +51,54 @@ active
                         {{ post.author }}</small></p>
                 <p><strong>{{ post.introduction }}</strong></p>
                 {{ post.content|safe }}
-                <p class="text-secondary"><small>Last updated on <span class=""
+                <p class="text-secondary m-0"><small>Last updated on <span class=""
                             id="last-updated">{{ post.last_updated }}</span></small></p>
             </div>
         </div>
+        <hr>
     </div>
 </article>
-<div class="section">
+<!-- Comments section -->
+<section class="comments-section">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <form method="POST" class="form mb-2" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% for field in comment_form %}
-                {{ field | as_crispy_field }}
-                {% endfor %}
-                <div class="text-right">
-                    <a class="btn btn-outline-danger rounded-0 text-uppecase" href="{% url 'news' %}">Cancel</a>
-                    <button class="btn btn-success rounded-0 text-uppercase" type="submit">Add Post</button>
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <h5><strong>Comments ({{ comments|length }})</strong></h5>
+                {% if request.user.is_authenticated %}
+                <form method="POST" class="form mb-3 bg-dark p-3" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in comment_form %}
+                    {{ field | as_crispy_field }}
+                    {% endfor %}
+                    <button class="btn btn-success btn-sm rounded-0 text-uppercase" type="submit">Add comment</button>
+                </form>
+                {% else %}
+                    <p>Please <a href="{% url 'account_login' %}">login</a> to leave a comment</p>
+                {% endif %}
+            </div>
+        </div>
+        {% for comment in comments %}
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <div class="row">
+                    <div class="col-5">
+                        <p><i class="fas fa-user"></i> <strong>{{comment.comment_author}}</strong></p>
+                    </div>
+                    <div class="col-7">
+                        <p class="text-end"><small><i class="far fa-clock"></i> {{comment.date_created}}</small></p>
+                    </div>
+                    <div class="col-12">
+                        <p>{{comment.comment_text}}</p>
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'delete_comment' comment.id %}" class="text-danger text-end">Delete</a>
+                        {% endif %}
+                        <hr class="text-success">
+                    </div>
                 </div>
-            </form>
             </div>
         </div>
-    </div>
-</div>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                {% for comment in comments %}
-                {{comment.comment_text}}
-                <a href="{% url 'delete_comment' comment.id %}">Delete</a>
-                {{comment.comment_author}}
-                {% endfor %}
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
+
 {% endblock %}

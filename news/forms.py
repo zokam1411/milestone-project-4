@@ -35,3 +35,9 @@ class CommentForm(forms.ModelForm):
 
         self.fields['comment_text'].widget.attrs['placeholder'] = 'Add a comment...'
         self.fields['comment_text'].widget.attrs['rows'] = 4
+        self.fields['comment_text'].label = False
+
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'rounded-0'
+            
+
