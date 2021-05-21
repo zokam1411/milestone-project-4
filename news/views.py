@@ -93,11 +93,23 @@ def edit_post(request, post_id):
 
 @login_required
 def delete_post(request, post_id):
-    """ Delete a product from the store """
+    """ Delete post from the news page """
     if not request.user.is_superuser:
         messages.error(request, 'Only club committee has access here.')
         return redirect(reverse('home'))
     post = get_object_or_404(News, pk=post_id)
     post.delete()
     messages.success(request, 'Post deleted!')
+    return redirect(reverse('news'))
+
+
+@login_required
+def delete_comment(request, comment_id):
+    """ Delete a comment from post """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only club committee has access here.')
+        return redirect(reverse('home'))
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    messages.success(request, 'Comment deleted!')
     return redirect(reverse('news'))

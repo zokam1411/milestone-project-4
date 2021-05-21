@@ -63,6 +63,7 @@ active
             <div class="col-12">
                 {% for comment in comments %}
                 {{comment.comment_text}}
+                <a href="{% url 'delete_comment' comment.id %}">Delete</a>
                 {% endfor %}
             </div>
         </div>
