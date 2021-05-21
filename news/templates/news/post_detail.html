@@ -57,4 +57,15 @@ active
         </div>
     </div>
 </article>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% for comment in comments %}
+                {{comment.comment_text}}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

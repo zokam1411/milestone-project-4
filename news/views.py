@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import News
+from .models import News, Comment
 from .forms import NewsForm
 
 # Create your views here.
@@ -11,7 +11,7 @@ from .forms import NewsForm
 def news(request):
     """ A view to show all news """
 
-    news = News.objects.all()
+    news = News.objects.all().order_by('-date_created')
 
     context = {
         'news': news
@@ -24,9 +24,11 @@ def post_detail(request, post_id):
     """ A view to show individual news """
 
     post = get_object_or_404(News, pk=post_id)
+    comments = Comment.objects.filter(news=post)
 
     context = {
         'post': post,
+        'comments': comments,
     }
 
     return render(request, 'news/post_detail.html', context)
