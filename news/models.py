@@ -32,7 +32,7 @@ class News(models.Model):
 class Comment(models.Model):
 
     class Meta:
-        ordering = ['-date_created']
+        ordering = ['date_created']
 
     news = models.ForeignKey(News, on_delete=models.CASCADE)
     comment_author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
