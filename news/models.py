@@ -35,7 +35,7 @@ class Comment(models.Model):
         ordering = ['-date_created']
 
     news = models.ForeignKey(News, on_delete=models.CASCADE)
-    comment_author = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)
+    comment_author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     comment_text = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 
