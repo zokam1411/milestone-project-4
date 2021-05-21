@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 class News(models.Model):
 
     class Meta:
+        ordering = ['-date_created']
+
         verbose_name_plural = 'News'
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL,
@@ -25,3 +27,17 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+
+    class Meta:
+        ordering = ['-date_created']
+
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    comment_author = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)
+    comment_text = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.comment_text
