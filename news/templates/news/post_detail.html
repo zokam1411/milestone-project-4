@@ -57,6 +57,24 @@ active
         </div>
     </div>
 </article>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method="POST" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in comment_form %}
+                {{ field | as_crispy_field }}
+                {% endfor %}
+                <div class="text-right">
+                    <a class="btn btn-outline-danger rounded-0 text-uppecase" href="{% url 'news' %}">Cancel</a>
+                    <button class="btn btn-success rounded-0 text-uppercase" type="submit">Add Post</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
 <section>
     <div class="container">
         <div class="row">
@@ -64,6 +82,7 @@ active
                 {% for comment in comments %}
                 {{comment.comment_text}}
                 <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+                {{comment.comment_author}}
                 {% endfor %}
             </div>
         </div>
