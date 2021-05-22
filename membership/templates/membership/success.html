@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_membership %}
+active
+{% endblock %}
+
+{% block bottom_header %}
+<!-- Bottom header -->
+<header class="bottom-header mt-1 mb-1">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
+                <a href="{% url 'home' %}">
+                    <img src="../media/logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h2 class="d-none d-sm-block"><strong>We are an RC Car Club run by members for members.</strong></h2>
+                <h6 class="d-sm-none"><strong>We are an RC Car Club run by members for members.</strong></h6>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Hero section -->
+<section class="text-center mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Membership</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Membership card -->
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-success mb-5">Membership success!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script src="{% static 'membership/js/stripe_membership.js' %}"></script>
+{% endblock %}
