@@ -25,7 +25,7 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'https://8000-moccasin-felidae-9igwpt5w.ws-eu07.gitpod.io/'
+        domain_url = 'https://8000-moccasin-felidae-9igwpt5w.ws-eu07.gitpod.io/membership/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -44,3 +44,13 @@ def create_checkout_session(request):
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
             return JsonResponse({'error': str(e)})
+
+
+@login_required
+def success(request):
+    return render(request, 'membership/success.html')
+
+
+@login_required
+def cancel(request):
+    return render(request, 'membership/cancel.html')
