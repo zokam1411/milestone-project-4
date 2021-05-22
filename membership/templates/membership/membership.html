@@ -46,10 +46,15 @@ active
                     <h6 class="card-subtitle mb-2">&euro;40</h6>
                     <hr class="mb-0 mt-1">
                     <p>1 year single membership</p>
-                    <a href="" class="btn btn-success text-uppercase">Join now</a>
+                    <button type="submit" class="btn btn-success text-uppercase rounded-0" id="submitBtn">Join now</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script src="{% static 'membership/js/stripe_membership.js' %}"></script>
 {% endblock %}
