@@ -1,3 +1,5 @@
 from django.contrib import admin
+from membership.models import StripeCustomer
 
-# Register your models here.
+
+admin.site.register(StripeCustomer)
