@@ -182,13 +182,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Stripe
 GUEST_DELIVERY = 5
 GUEST_DISCOUNT = 0
 MEMBER_DELIVERY = 0
 MEMBER_DISCOUNT = 5
+
+# Stripe
 STRIPE_CURRENCY = 'EUR'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
+STRIPE_PRICE_ID = os.environ.get('STRIPE_PRICE_ID', '')
 DEFAULT_FROM_EMAIL = 'info@ffrccc.ie'
