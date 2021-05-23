@@ -16,23 +16,27 @@ import stripe
 
 def membership(request):
     """ A view to display the memberships page """
-    try:
-        # Retrieve the subscription & product
-        stripe_customer = StripeCustomer.objects.get(user=request.user)
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(
-            stripe_customer.stripeSubscriptionId)
-        product = stripe.Product.retrieve(subscription.plan.product)
+    if request.user.is_authenticated:
+        try:
+            # Retrieve the subscription & product
+            stripe_customer = StripeCustomer.objects.get(user=request.user)
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            subscription = stripe.Subscription.retrieve(
+                stripe_customer.stripeSubscriptionId)
+            product = stripe.Product.retrieve(subscription.plan.product)
 
-        context = {
-            'subscription': subscription,
-            'product': product,
-            'on_membership_page': True,
-        }
+            context = {
+                'subscription': subscription,
+                'product': product,
+                'on_membership_page': True,
+            }
 
-        return render(request, 'membership/membership.html', context)
+            return render(request, 'membership/membership.html', context)
 
-    except StripeCustomer.DoesNotExist:
+        except StripeCustomer.DoesNotExist:
+            return render(request, 'membership/membership.html')
+
+    else:
         return render(request, 'membership/membership.html')
 
 
