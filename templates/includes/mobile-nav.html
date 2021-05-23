@@ -25,7 +25,7 @@
     <li class="list-inline-item">
         <a href="{% url 'view_bag' %}" class="text-white">
             <i class="fas fa-shopping-basket"></i>
-            {% if grand_total %}
+            {% if total != 0 %}
             &euro;{{ grand_total|floatformat:2 }}
             {% else %}
             &euro;0.00
