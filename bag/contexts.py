@@ -2,11 +2,16 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from profiles.models import UserProfile
 
 
 def bag_contents(request):
 
     membership = None
+
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        membership = profile.membership
 
     bag_items = []
     total = 0
@@ -35,13 +40,12 @@ def bag_contents(request):
                     'turns': turns,
                 })
 
-    if membership == 'Member':
+    if membership == "active":
         discount = total * Decimal(settings.MEMBER_DISCOUNT / 100)
-        delivery = total * Decimal(settings.MEMBER_DISCOUNT / 100)
+        delivery = settings.MEMBER_DELIVERY
     else:
-        discount = total * Decimal(settings.GUEST_DISCOUNT / 100)
-        delivery = total * Decimal(settings.GUEST_DELIVERY / 100)
-
+        discount = settings.GUEST_DISCOUNT
+        delivery = settings.GUEST_DELIVERY
 
     grand_total = total - discount + delivery
 
@@ -52,6 +56,7 @@ def bag_contents(request):
         'discount': discount,
         'delivery': delivery,
         'grand_total': grand_total,
+        'membership': membership
     }
 
     return context

@@ -30,11 +30,13 @@
                         <div class="bag-img">
                             {% if item.product.image %}
                             <a href="{% url 'product_detail' item.item_id %}">
-                                <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                <img class="img-fluid rounded" src="{{ item.product.image.url }}"
+                                    alt="{{ item.product.name }}">
                             </a>
                             {% else %}
                             <a href="{% url 'product_detail' item.item_id %}">
-                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}no-image.png"
+                                    alt="{{ item.product.name }}">
                             </a>
                             {% endif %}
                         </div>
@@ -94,14 +96,6 @@
                 </tr>
                 {% endfor %}
             </table>
-            <div class="row mb-3">
-                <a href="{% url 'products' %}" class="text-success">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Keep Shopping</span>
-                </a>
-            </div>
         </div>
         <!-- Summary -->
         <div class="col-12 col-md-6 offset-md-6 offset-lg-0 col-lg-3">
@@ -112,8 +106,20 @@
                             <h6>Total products:</h6>
                         </div>
                         <div class="col-4 text-end">
-                            <strong>&euro;{{ total|floatformat:2 }}</strong>
+                            <strong class="text-success">&euro;{{ total|floatformat:2 }}</strong>
                         </div>
+                    </div>
+                </div>
+                <div class="discount pb-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <h6 class="pt-2">
+                                Discount:
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-12 text-end">
+                        <p class="mb-1"><span class="text-success">&euro;{{ discount|floatformat:2 }}</span></p>
                     </div>
                 </div>
                 <div class="delivery pb-2">
@@ -154,51 +160,60 @@
             </div>
         </div>
     </div>
-    {% else %}
-    <div class="container">
-        <div class="row">
-            <div class="alert alert-danger">
-                <h2>Cart Empty</h2>
-                <p class="lead mb-0">Your cart contains no items.</p>
-            </div>
-            <a href="{% url 'products' %}" class="text-success">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="text-uppercase">Keep Shopping</span>
-            </a>
-        </div>
+    <div class="row mb-3">
+        <a href="{% url 'products' %}" class="text-success">
+            <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="text-uppercase">Keep Shopping</span>
+        </a>
     </div>
-    {% endif %}
-    {% endblock %}
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="alert alert-danger">
+            <h2>Cart Empty</h2>
+            <p class="lead mb-0">Your cart contains no items.</p>
+        </div>
+        <a href="{% url 'products' %}" class="text-success">
+            <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="text-uppercase">Keep Shopping</span>
+        </a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
 
-    {% block postloadjs %}
-    {{ block.super }}
-    {% include 'products/includes/quantity_input_script.html' %}
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
 
-    <script type="text/javascript">
-        // Update quantity on click
-        $('.update-link').click(function (e) {
-            var form = $(this).prev('.update-form');
-            form.submit();
-        })
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
 
-        // Remove item and reload on click
-        $('.remove-item').click(function (e) {
-            var csrfToken = "{{ csrf_token }}";
-            var itemId = $(this).attr('id').split('remove_')[1];
-            var turns = $(this).data('product_turns');
-            var url = `/bag/remove/${itemId}/`;
-            var data = {
-                'csrfmiddlewaretoken': csrfToken,
-                'product_turns': turns
-            };
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var turns = $(this).data('product_turns');
+        var url = `/bag/remove/${itemId}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'product_turns': turns
+        };
 
-            $.post(url, data)
-                .done(function () {
-                    location.reload();
-                });
-        })
-    </script>
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
 
-    {% endblock %}
+{% endblock %}
