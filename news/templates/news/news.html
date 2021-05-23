@@ -55,7 +55,7 @@ active
                     <h2 class="m-0 text-success underline"><strong>{{ post.title }}</strong></h2>
                 </a>
                 <p class="text-secondary"><small>Posted on {{ post.date_created }} | by {{ post.author }}</small></p>
-                <p>{{ post.introduction|slice:":200" }}...</p>
+                <p>{{ post.introduction|slice:"200" }}...</p>
             </div>
         </div>
         {% endfor %}
