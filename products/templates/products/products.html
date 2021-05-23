@@ -1,23 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block nav_shop %}
+active
+{% endblock %}
+
+{% block bottom_header %}
+<section class="pt-3 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-4 col-md-3 text-center">
+                <a href="{% url 'home' %}">
+                    <img src="../media/logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h1 class="d-none d-md-block">Welcome to the FFRCCC's online shop!</h1>
+                <h6 class="d-md-none"><strong>Welcome to the FFRCCC's online shop!</strong></h6>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
 {% block content %}
+<div class="site-nav mt-3 mb-3 pt-1 pb-1 bg-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'shop' %}" class="text-success"><span
+                        class="text-dark">&lt; Back to </span> Shop</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Search section -->
 
 {% include 'products/includes/search-section.html' %}
 
-<!-- Sort -->
-<div class="container">
-    <div class="row text-end">
-
-    </div>
-</div>
-
-<div class="container">
-</div>
-
 <!-- Categories -->
-<section class="categories-section">
+<section class="categories-section mb-3">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-3 mb-5">
@@ -33,7 +55,8 @@
                 {% if category.name == current_category %}
                 <a href="{% url 'products' %}?category={{category.name}}">
                     <div class="pt-2 pb-2 current-category text-success">
-                        <p class="ms-2 mb-0"><i class="fas fa-arrow-right"></i> <span class="ms-2">{{ category.friendly_name }}</span></p>
+                        <p class="ms-2 mb-0"><i class="fas fa-arrow-right"></i> <span
+                                class="ms-2">{{ category.friendly_name }}</span></p>
                     </div>
                 </a>
                 {% else %}
@@ -166,11 +189,6 @@
             </div>
         </div>
     </div>
-</section>
-
-<!-- Products section -->
-<section class="products-section">
-
 </section>
 {% endblock %}
 
