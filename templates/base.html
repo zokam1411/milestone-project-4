@@ -135,19 +135,14 @@
                         <li>Dublin</li>
                         <li>D09 FF33</li>
                     </ul>
-                    <a href="" class="text-danger">
-                        <p class="mb-0">Track is only open on track days</p>
-                        <p class="mb-0">Check events for details</p>
-                    </a>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 pb-4">
                     <h6 class="text-uppercase"><span><i class="fas fa-link text-success pe-1"></i></span>
                         <strong>Site Links</strong></h6>
                     <ul class="list-unstyled mb-0">
                         <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Membership</a></li>
+                        <li><a href="{% url 'news' %}">News</a></li>
+                        <li><a href="{%url 'membership' %}">Membership</a></li>
                         <li><a href="{%  url 'shop' %}">Shop</a></li>
                     </ul>
                 </div>
