@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
@@ -61,7 +61,6 @@ def create_checkout_session(request):
                     }
                 ]
             )
-            print(checkout_session)
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
             return JsonResponse({'error': str(e)})
@@ -94,8 +93,6 @@ def stripe_webhook(request):
         return HttpResponse(content=e, status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        return HttpResponse(content=e, status=400)
-    except Exception as e:
         return HttpResponse(content=e, status=400)
 
     # Handle the checkout.session.completed event
