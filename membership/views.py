@@ -1,8 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from membership.models import StripeCustomer
 
 import stripe
 
@@ -10,9 +14,25 @@ import stripe
 
 
 def membership(request):
-    """ A view to return membership page """
+    """ A view to display the memberships page """
+    try:
+        # Retrieve the subscription & product
+        stripe_customer = StripeCustomer.objects.get(user=request.user)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        subscription = stripe.Subscription.retrieve(
+            stripe_customer.stripeSubscriptionId)
+        product = stripe.Product.retrieve(subscription.plan.product)
 
-    return render(request, 'membership/membership.html')
+        context = {
+            'subscription': subscription,
+            'product': product,
+            'on_membership_page': True,
+        }
+
+        return render(request, 'membership/membership.html', context)
+
+    except StripeCustomer.DoesNotExist:
+        return render(request, 'membership/membership.html')
 
 
 @csrf_exempt
@@ -25,7 +45,7 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'https://8000-moccasin-felidae-9igwpt5w.ws-eu07.gitpod.io/membership/'
+        domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -41,6 +61,7 @@ def create_checkout_session(request):
                     }
                 ]
             )
+            print(checkout_session)
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
             return JsonResponse({'error': str(e)})
@@ -54,3 +75,44 @@ def success(request):
 @login_required
 def cancel(request):
     return render(request, 'membership/cancel.html')
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    endpoint_secret = settings.STRIPE_MEMBERSHIP_WH_SECRET
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(content=e, status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(content=e, status=400)
+    except Exception as e:
+        return HttpResponse(content=e, status=400)
+
+    # Handle the checkout.session.completed event
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+
+        # Fetch all the required data from session
+        client_reference_id = session.get('client_reference_id')
+        stripe_customer_id = session.get('customer')
+        stripe_subscription_id = session.get('subscription')
+
+        # Get the user and create a new StripeCustomer
+        user = User.objects.get(id=client_reference_id)
+        StripeCustomer.objects.create(
+            user=user,
+            stripeCustomerId=stripe_customer_id,
+            stripeSubscriptionId=stripe_subscription_id,
+        )
+
+    return HttpResponse(status=200)
