@@ -25,7 +25,7 @@ active
 {% endblock %}
 
 {% block content %}
-<!-- hero section -->
+<!-- hero text -->
 <section class="text-center mt-5 mb-5">
     <div class="container">
         <div class="row">
@@ -55,7 +55,7 @@ active
                     <h2 class="m-0 text-success underline"><strong>{{ post.title }}</strong></h2>
                 </a>
                 <p class="text-secondary"><small>Posted on {{ post.date_created }} | by {{ post.author }}</small></p>
-                <p>{{ post.introduction|slice:"200" }}...</p>
+                <p class="mb-0">{{ post.introduction|slice:"200" }}...</p>
             </div>
         </div>
         {% endfor %}
