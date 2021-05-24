@@ -52,6 +52,12 @@ a {
     text-decoration: underline;
 }
 
+/* Top header */
+
+#my-account-dropdown {
+    z-index: 9999;
+}
+
 /* Navbar */
 
 .navbar {
