@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block nav_membership %}
-active
-{% endblock %}
-
 {% block bottom_header %}
 <!-- Bottom header -->
 <header class="bottom-header mt-1 mb-1">
@@ -12,7 +8,7 @@ active
         <div class="row">
             <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
                 <a href="{% url 'home' %}">
-                    <img src="../media/logo.png" alt="FFRCCC logo">
+                    <img src="{{ MEDIA_URL }}logo.png" alt="FFRCCC logo">
                 </a>
             </div>
             <div class="col-8 col-md-9 text-center my-auto">
@@ -25,32 +21,39 @@ active
 {% endblock %}
 
 {% block content %}
-<!-- Hero section -->
-<section class="text-center mt-5 mb-5">
+<!-- Back to membership -->
+<div class="site-nav mt-3 mb-3 pt-1 pb-1 bg-list">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Membership</h1>
-                <hr>
+                <a href="{% url 'membership' %}" class="text-success">&lt; BACK TO MEMBERSHIP</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero section -->
+<section class="text-center mt-2 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-success"><strong>Success <i class="fas fa-exclamation"></i></strong></h2>
             </div>
         </div>
     </div>
 </section>
 <!-- Membership card -->
 <div class="container">
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title text-success mb-5">Membership success!</h2>
-                </div>
-            </div>
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h3 class="mb-2">You are now member of FFRCCC!</h3>
+            <h3>You can check your membership status on membership page.</h3>
+            <a href="{% url 'membership' %}" class="btn btn-success rounded-0">Membership</a>
         </div>
     </div>
 </div>
-{% endblock %}
+    {% endblock %}
 
-{% block postloadjs %}
-{{ block.super }}
+    {% block postloadjs %}
+    {{ block.super }}
     <script src="{% static 'membership/js/stripe_membership.js' %}"></script>
-{% endblock %}
+    {% endblock %}

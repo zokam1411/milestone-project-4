@@ -25,8 +25,8 @@ active
 {% endblock %}
 
 {% block content %}
-<!-- Hero section -->
-<section class="text-center mt-5 mb-5">
+<!-- Hero text -->
+<section class="text-center mt-5 mb-3">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -39,30 +39,44 @@ active
 <!-- Membership card -->
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="card">
+        <div class="col2 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+            <p>Joining the FFRCCC is straightforward. There is no joining fee, simply a modest annual subscription.</p>
+            <p class="m-0">Membership entitles to unlimited use of the track at weekends and during Wednesday training sessions.
+                Members also get a 10% discount on all products in the shop and free shipping. Do not hesitate, join us
+                today!</p>
+        </div>
+    </div>
+    <div class="row mb-5 mt-3">
+        <div class="col-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+            <div class="card rounded-0">
+                <!-- 1 -->
+                {% if subscription.status == "active" %}
                 <div class="card-body">
-                    <h2 class="card-title text-success mb-5">Single</h2>
-                    <h6 class="card-subtitle mb-2">&euro;40</h6>
+                    <h1 class="card-title text-success mb-5">Hello {{request.user}} <i class="fas fa-exclamation"></i></h1>
+                    <h5 class="card-subtitle mb-2"><strong>Your current membership status:</strong></h5>
+                    <ul>
+                        <li><h3>{{ product.name }} <i class="far fa-user"></i></h3></li>
+                    </ul>
+                </div>
+                {% else %}
+                <!-- 2 -->
+                <div class="card-body">
+                    <h1 class="card-title text-success mb-5">Single</h1>
+                    <h3 class="card-subtitle mb-2"><strong>&euro;40</strong></h3>
                     <hr class="mb-0 mt-1">
-                    <p>1 year single membership</p>
+                    <p class="mb-5">1 year single membership</p>
+                    {% if request.user.is_authenticated %}
                     <button type="submit" class="btn btn-success text-uppercase rounded-0" id="submitBtn">Join
                         now</button>
+                    {% else %}
+                    <button class="btn btn-success text-uppercase rounded-0" disabled>Join
+                        now</button>
+                    <p>You must <a href="{% url 'account_login' %}">login</a> to purchase membership.</p>
+                    {% endif %}
                 </div>
+                {% endif %}
+                <!-- end -->
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-md-4">
-            {% if subscription.status == "active" %}
-            <h4>Your subscription:</h4>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">
-                        {{ product.description }}
-                    </p>
-                </div>
-            </div>
-            {% endif %}
         </div>
     </div>
 </div>
