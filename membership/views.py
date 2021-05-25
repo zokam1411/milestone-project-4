@@ -62,6 +62,7 @@ def create_checkout_session(request):
                 cancel_url=domain_url + 'cancel/',
                 payment_method_types=['card'],
                 mode='subscription',
+                cancel_at_period_end=True,
                 line_items=[
                     {
                         'price': settings.STRIPE_PRICE_ID,
