@@ -1,0 +1,13 @@
+Hello!
+
+This is your membership confirmation.
+
+Membership is valid for 1 year and will automatically expire.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you!
+
+Sincerely,
+
+Fast & Furious Team

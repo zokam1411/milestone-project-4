@@ -69,6 +69,7 @@ class StripeWH_Handler:
         profile = get_object_or_404(UserProfile, user=user)
         profile.membership = 'active'
         profile.save()
+        self._send_confirmation_email(user)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
@@ -80,12 +81,12 @@ class StripeWH_Handler:
 
         customer = stripe.Customer(event_object['customer'])
 
-        user = get_object_or_404(StripeCustomer, stripeCustomerId=customer['id'])
-        # user.delete()
-
-        profile = get_object_or_404(UserProfile, user=user['user'])
-        # profile.membership = 'deleted'
-        # profile.save()
+        stripe_customer = get_object_or_404(StripeCustomer, stripeCustomerId=customer['id'])
+        user = stripe_customer.user
+        stripe_customer.delete()
+        profile = get_object_or_404(UserProfile, user=user)
+        profile.membership = 'deleted'
+        profile.save()
 
         print(user)
         print(profile)
