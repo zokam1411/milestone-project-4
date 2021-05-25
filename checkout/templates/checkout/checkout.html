@@ -16,17 +16,16 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Checkout</h2>
-            <hr>
+    <div class="row mt-3 mb-3">
+        <div class="col-12">
+            <h2 class="m-0"><strong>Checkout <i class="far fa-credit-card"></i></strong></h2>
         </div>
     </div>
-
+</div>
+<div class="container">
     <div class="row">
         <div class="col-12 col-lg-6 order-lg-last mb-5">
-            <p class="text-muted">Order Summary ({{ product_count }})</p>
+            <p><strong>Order Summary ({{ product_count }})</strong></p>
             <div class="row">
                 <div class="col-7 offset-2">
                     <p class="mb-1 mt-0 small text-muted">Item</p>
@@ -75,7 +74,7 @@
             </div>
         </div>
         <div class="col-12 col-lg-6">
-            <p class="text-muted">Please fill out the form below to complete your order</p>
+            <p><strong>Please fill out the form below to complete your order</strong></p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
