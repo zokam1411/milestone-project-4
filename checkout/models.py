@@ -42,12 +42,8 @@ class Order(models.Model):
         """
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        self.delivery_cost = (
-            self.order_total * settings.GUEST_DELIVERY / 100
-            )
-        self.discount = (
-            self.order_total * settings.GUEST_DISCOUNT / 100
-            )
+        self.delivery_cost = (settings.GUEST_DELIVERY)
+        self.discount = (settings.GUEST_DISCOUNT)
         self.grand_total = (
             self.order_total - self.discount + self.delivery_cost
             )
@@ -60,6 +56,21 @@ class Order(models.Model):
         """
         if not self.order_number:
             self.order_number = self._generate_order_number()
+        if self.user_profile:
+            if self.user_profile.membership == 'active':
+                self.delivery_cost = (settings.MEMBER_DELIVERY)
+                self.discount = (
+                    self.order_total * settings.MEMBER_DISCOUNT / 100
+                )
+                self.grand_total = (
+                    self.order_total - self.discount + self.delivery_cost
+                )
+            else:
+                self.delivery_cost = (settings.GUEST_DELIVERY)
+                self.discount = (settings.GUEST_DISCOUNT)
+                self.grand_total = (
+                    self.order_total - self.discount + self.delivery_cost
+                )
         super().save(*args, **kwargs)
 
     def __str__(self):
