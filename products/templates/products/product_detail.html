@@ -128,7 +128,7 @@ active
                             Description
                         </li>
                         <li class="list-inline-item m-0 p-2 g-0" id="reviews">
-                            Reviews
+                            Reviews ({{ reviews|length }})
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -136,7 +136,44 @@ active
                             <p>{{ product.description }}</p>
                         </div>
                         <div id="reviews-tab">
-                            <p>I like the stock</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if request.user.is_authenticated %}
+                <form method="POST" class="form mb-2 bg-dark p-1" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in review_form %}
+                    {{ field | as_crispy_field }}
+                    {% endfor %}
+                    <button class="btn btn-success btn-sm rounded-0 text-uppercase" type="submit">Add review</button>
+                </form>
+                {% else %}
+                    <p>Please <a href="{% url 'account_login' %}">login</a> to leave a review</p>
+                {% endif %}
+            </div>
+        </div>
+        {% for review in reviews %}
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4">
+                        <p class="mb-0 ms-1"><i class="fas fa-user"></i> <strong>{{review.review_author}}</strong></p>
+                    </div>
+                    <div class="col-8">
+                        <p class="text-end m-0 me-1"><small><i class="far fa-clock"></i> {{review.date_created}}</small></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="mb-0 ms-1">{{review.review_text}}</p>
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'delete_review' review.id %}" class="text-danger ms-1">Delete</a>
+                        {% endif %}
+                        <hr class="text-success m-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
                         </div>
                     </div>
                     <hr>
