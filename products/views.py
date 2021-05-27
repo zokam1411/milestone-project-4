@@ -57,6 +57,7 @@ def all_products(request):
         'search_term': query,
         'current_category': current_category,
         'current_sorting': current_sorting,
+        'all_products': True
     }
 
     return render(request, 'products/products.html', context)
@@ -87,6 +88,7 @@ def product_detail(request, product_id):
         'review': review,
         'reviews': reviews,
         'review_form': review_form,
+        'product_detail': True
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -102,7 +104,7 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, 'Successfully added product!')
+            messages.success(request, 'Product successfully added!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
