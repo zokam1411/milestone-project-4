@@ -111,3 +111,11 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item {e}')
         return HttpResponse(status=500)
+
+
+def empty_bag(request):
+    bag = request.session.get('bag', {})
+    if 'bag' in request.session:
+        del request.session['bag']
+    messages.success(request, 'Bag emptied!')
+    return redirect(reverse('view_bag'))
