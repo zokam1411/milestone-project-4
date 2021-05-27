@@ -5,8 +5,25 @@
 active
 {% endblock %}
 
+{% block bottom_header %}
+<header class="bottom-header mt-1 mb-1">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
+                <a href="{% url 'home' %}">
+                    <img src="{{ MEDIA_URL }}logo.png" alt="FFRCCC logo">
+                </a>
+            </div>
+            <div class="col-8 col-md-9 text-center my-auto">
+                <h2 class="d-none d-sm-block"><strong>Welcome to the FFRCCC's online shop!</strong></h2>
+                <h6 class="d-sm-none"><strong>Welcome to the FFRCCC's online shop!</strong></h6>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
 {% block content %}
-<!-- Product section -->
 <!-- Back to category-->
 <div class="site-nav mt-3 mb-3 pt-1 pb-1 bg-list">
     <div class="container">
