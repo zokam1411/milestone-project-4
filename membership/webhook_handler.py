@@ -23,10 +23,10 @@ class StripeWH_Handler:
         cust_email = user.email
         subject = render_to_string(
             'membership/confirmation_emails/confirmation_email_subject.txt',
-            {'StripeCustomer': StripeCustomer})
+            {'user': user})
         body = render_to_string(
             'membership/confirmation_emails/confirmation_email_body.txt',
-            {'StripeCustomer': StripeCustomer, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            {'user': user, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
         send_mail(
             subject,
@@ -54,9 +54,6 @@ class StripeWH_Handler:
         client_reference_id = intent.get('client_reference_id')
         stripe_customer_id = intent.get('customer')
         stripe_subscription_id = intent.get('subscription')
-        print(client_reference_id)
-        print(stripe_customer_id)
-        print(stripe_subscription_id)
 
         # Get the user and create a new StripeCustomer
         user = User.objects.get(id=client_reference_id)
@@ -87,9 +84,6 @@ class StripeWH_Handler:
         profile = get_object_or_404(UserProfile, user=user)
         profile.membership = 'deleted'
         profile.save()
-
-        print(user)
-        print(profile)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
