@@ -24,6 +24,19 @@ active
 {% endblock %}
 
 {% block content %}
+<section class="text-center mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>FFRCCC Shop</h1>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'add_product' %}" class="btn btn-success rounded-0 text-uppercase">Add new product</a>
+                {% endif %}
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Search section -->
 
 {% include 'products/includes/search-section.html' %}
@@ -109,7 +122,7 @@ active
                     {% for product in products %}
                     <div class="col-6 col-md-6 col-lg-3 mb-3">
                         <div class="card h-100 rounded-0">
-                            <div class="img-holder mt-2 mb-1">
+                            <div class="img-holder mt-2 mb-2">
                                 {% if product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
                                     <img src="{{ product.image.url }}" alt="{{product.name}}">
@@ -125,6 +138,9 @@ active
                                 <a href="{% url 'product_detail' product.id %}" class="text-dark">
                                     <p class="text-dark card-title">{{product.name}}</hp>
                                 </a>
+                            </div>
+                            <div class="card-sku">
+                                <p class="text-muted">{{ product.sku }}</p>
                             </div>
                             <div class="card-price">
                                 <p><strong>&euro;{{product.price}}</strong></p>

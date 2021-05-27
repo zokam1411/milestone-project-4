@@ -23,7 +23,7 @@ active
 <section class="product-detail-section">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mb-lg-3">
                 <div class="image-container">
                     {% if product.image %}
                     <a href="{{ product.image.url }}" target="_blank">
@@ -133,7 +133,7 @@ active
                     </ul>
                     <div class="tab-content">
                         <div id="description-tab">
-                            <p>{{ product.description }}</p>
+                            <p>{{ product.description|safe }}</p>
                         </div>
                         <div id="reviews-tab">
     <div class="container">

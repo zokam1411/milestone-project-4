@@ -155,7 +155,8 @@ footer a:hover {
 
 .img-holder {
     height: 90px;
-    margin: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .img-holder img {
