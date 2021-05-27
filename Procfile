@@ -1,1 +1,1 @@
-web: gunicorn rcc_club.wsgi:application
+web: gunicorn rc_club.wsgi:application
