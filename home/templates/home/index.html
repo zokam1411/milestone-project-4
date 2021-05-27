@@ -12,7 +12,7 @@ active
         <div class="row">
             <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
                 <a href="{% url 'home' %}">
-                    <img src="../media/logo.png" alt="FFRCCC logo">
+                    <img src="{{ MEDIA_URL }}logo.png" alt="FFRCCC logo">
                 </a>
             </div>
             <div class="col-8 col-md-9 text-center my-auto">
@@ -72,7 +72,7 @@ active
         </div>
     </div>
     <div class="col-12 offset-md-2 col-md-8">
-        <img src="/media/club.jpg" class="img-fluid" alt="Club racings">
+        <img src="{{ MEDIA_URL }}club.jpg" class="img-fluid" alt="Club racings">
     </div>
 </section>
 <!-- Membership section -->
