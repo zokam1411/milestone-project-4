@@ -1,0 +1,38 @@
+  {% extends "base.html" %}
+
+  {% block bottom_header %}
+  <!-- Bottom header -->
+  <header class="bottom-header mt-1 mb-1">
+      <div class="container">
+          <div class="row">
+              <div class="logo col-4 col-md-3 mt-1 mb-1 text-center">
+                  <a href="{% url 'home' %}">
+                      <img src="{{ MEDIA_URL }}logo.png" alt="FFRCCC logo">
+                  </a>
+              </div>
+              <div class="col-8 col-md-9 text-center my-auto">
+                  <h2 class="d-none d-sm-block"><strong>Error...</strong></h2>
+                  <h6 class="d-sm-none"><strong>Error...</strong></h6>
+              </div>
+          </div>
+      </div>
+  </header>
+  {% endblock %}
+
+  {% block content %}
+  <section class="bg-white">
+      <div class="container">
+          <div class="row mb-0 center-align">
+              <div class="col-12 col-md-5 my-auto">
+                  <img class="float-start img-fluid" src="{{ MEDIA_URL }}rolling.jpg" alt="rolling">
+              </div>
+              <div class="col-12 col-md-7 my-auto">
+                  <div class="big-text text-center mb-0 mt-0">404</div>
+                  <h5 class="pt-0"><strong>The page you were looking for was not found. It might have been removed, renamed, or
+                      did not exist in the first place.</strong></h5>
+                  <h5 class="mb-5"><strong>Let's drive <a href="{% url 'home' %}">Home</a></strong></h5>
+              </div>
+          </div>
+      </div>
+  </section>
+  {% endblock content %}
