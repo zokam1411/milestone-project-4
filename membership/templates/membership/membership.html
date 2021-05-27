@@ -48,7 +48,7 @@ active
     </div>
     <div class="row mb-5 mt-3">
         <div class="col-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-            <div class="card rounded-0">
+            <div class="card rounded-0 bg-success text-white">
                 <!-- 1 -->
                 {% if subscription.status == "active" %}
                 <div class="card-body">
@@ -61,15 +61,15 @@ active
                 {% else %}
                 <!-- 2 -->
                 <div class="card-body">
-                    <h1 class="card-title text-success mb-5">Single</h1>
+                    <h1 class="card-title mb-5"><i class="fas fa-user"></i> Single</h1>
                     <h3 class="card-subtitle mb-2"><strong>&euro;40</strong></h3>
                     <hr class="mb-0 mt-1">
                     <p class="mb-5">1 year single membership</p>
                     {% if request.user.is_authenticated %}
-                    <button type="submit" class="btn btn-success text-uppercase rounded-0" id="submitBtn">Join
+                    <button type="submit" class="btn btn-danger text-uppercase rounded-0" id="submitBtn">Join
                         now</button>
                     {% else %}
-                    <button class="btn btn-success text-uppercase rounded-0" disabled>Join
+                    <button class="btn btn-danger text-uppercase rounded-0" disabled>Join
                         now</button>
                     <p>You must <a href="{% url 'account_login' %}">login</a> to purchase membership.</p>
                     {% endif %}
