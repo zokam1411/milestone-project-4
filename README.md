@@ -47,6 +47,45 @@ For the testing of the store and subscriptions, a test credit card can be used b
 
 #### Guest (un-registered) User:
 
+- As a Guest user, I want to view information about the club.
+- As a Guest user, I want to see club contact informations.
+- As a Guest user, I want to read the latest news about the club.
+- As a Guest user, I want to read about benefits of membership.
+- As a Guest user, I want to view all products in the shop.
+- As a Guest User, I want to search for an item in the shop.
+- As a Guest user, I want to sort prducts by price, name and category.
+- As a Guest user, I want to see products within selected category.
+- As a Guest User, I want to see detailed view of an item.
+- As a Guest User, I want to be able to add items into the bag.
+- As a Guest User, I want to be able to manipulate a bag content.
+- As a Guest User, I want to see total count of the basket on every page.
+- As a Guest User, I want to know how Grand Total was calculated.
+- As a Guest User, I want easily fill out delivery information.
+- As a Guest User, I want to view an order summary once a purchase is made.
+- As a Guest User, I want to recieve an email confirmation when a purchase is made.
+- As a Guest User, I want to be able to register for an account.
 - As a Guest user, I want to be able to view the site on any device I may have.
 - As a Guest user, I want app to be visually appealing and easy in use.
+
+#### Registered User:
+
+- As a Registered User, I want to have the ability to Login to the site via my registered details.
+- As a Registered User, I want to be able to recover my account password.
+- As a Registered User, I want to be able to comment under individual club news.
+- As a Registered User, I want to be able to purchase club membership.
+- As a Registered User, I want to have a profile page where I can see my details.
+- As a Registered User, I want to have a profile page where I can see my purchase history.
+- As a Registered User, I want to write a products reviews.
+
+
+#### Superuser:
+
+- As a superuser, I want to add, edit and delete news.
+- As a superuser, I want to delete comments under individual news.#
+- As a superuser, I want to add, edit and delete products in shop.
+- As a superuser, I want to delete products reviews.
+
+#### Administrator:
+
+- As an Administrator, I want to be able to login to an administration panel.
 
