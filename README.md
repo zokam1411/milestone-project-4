@@ -89,3 +89,29 @@ For the testing of the store and subscriptions, a test credit card can be used b
 
 - As an Administrator, I want to be able to login to an administration panel.
 
+<p id="design"></p>
+
+### Design:
+
+#### Color Scheme:
+
+#################################################################################
+
+#### Typography:
+
+The "Lato" font is the main font used throughout the whole website with Sans Serif as the fall back font in case the font isn't imported into the site correctly.
+Lato offers a pleasing reading ability to the user and is easy on the eyes. Font is  clean, professional and very readable amongst all major languages.
+
+#### Content Structure:
+
+The application is primarily rectangular shaped. Buttons, cards have sharp edges to create consistent view for the user. Content is grouped in sections, an example of this would be the Home page:
+- The main body of the page is horizontally separated into sections, we have a hero section, about section where user can read  about the club, and finally we have membership section where are informations about membership. Page is finished by footer where user can find quick site links, club address, email address and social links.
+
+#### Wireframes:
+
+The first raw design wos drawn on a piece of paper and then the idea was transferred to an advanced creator.
+
+##################################################################################################################
+
+
+
