@@ -18,6 +18,9 @@ FFRCCC is a radio controlled car club. There are a number of users that the webs
 - <a href="#ux">User Experience Design 🧠</a>
     - <a href="#us">User Stories</a>
     - <a href="#us">Design</a>
+- <a href="#features">Features List 😲</a>
+  - <a href="#existing">Existing Features</a>
+  - <a href="#future">Future Features</a>
 
 <p id="project"></p>
 
@@ -80,10 +83,10 @@ For the testing of the store and subscriptions, a test credit card can be used b
 
 #### Superuser:
 
-- As a superuser, I want to add, edit and delete news.
-- As a superuser, I want to delete comments under individual news.#
-- As a superuser, I want to add, edit and delete products in shop.
-- As a superuser, I want to delete products reviews.
+- As a Superuser, I want to add, edit and delete news.
+- As a Superuser, I want to delete comments under individual news.#
+- As a Superuser, I want to add, edit and delete products in shop.
+- As a Superuser, I want to delete products reviews.
 
 #### Administrator:
 
@@ -113,5 +116,87 @@ The first raw design wos drawn on a piece of paper and then the idea was transfe
 
 ##################################################################################################################
 
+<div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
 
+<p id="features"></p>
+
+## 4️⃣ Features List 😲
+
+<p id="existing"></p>
+
+### Existing features:
+
+This application has different features for different user types. User status determines what kind of functions a given user has:
+- Guest - unregistered / not logged in user.
+- User - registered in database and logged in to application.
+- Superuser - User with higher level of permissions. The Superuser can add, edit, delete news and shop products from the application level. He also ensures that comments and reviews does not break ethical rules.
+- Admin - has the highest level of permissions and can login to admin panel.
+
+#### Navigation:
+
+The navbar serves as the main navigation for the site. It has bootstrap class="sticky" so it's always visible at the top of the page accross all pages of the site. The navbar has four links, which go to the home page, the news page, the the memberships page and shop.
+
+The top header shows links to login and register and basket which is the link to the basket page and also to keep track of the ammount of the current basket. Bottom header contains FFRCCC club logo, which links to the homepage.
+
+![navigation1](static/readmeimages/navigation-user.jpg)
+
+While user is logged in, instead of login and register links, he can see a 'My account' dropdown with options to go to the profile page or logout.
+
+![navigation2](static/readmeimages/navigation.jpg)
+
+#### Footer:
+
+The footer serves as secondary navigation. It has the same links as the navbar and also features the car club address and some external links to facebook, twitter and youtube.
+
+![footer](static/readmeimages/footer.jpg)
+
+#### Home:
+
+The home page is the landing page upon sign-up and login and the main hub for the app. The main features on this site is the hero image and a statement in header to say to check the online shop.
+
+![home1](static/readmeimages/home1.jpg)
+
+
+Beneath all this there are about section where we can find info about club
+
+![home2](static/readmeimages/home2.jpg)
+
+
+and membership section where we can find membership info and redirection button.
+
+![home3](static/readmeimages/home3.jpg)
+
+#### News:
+
+The news page serves as a place listing all of the news posts one page. The news are stacked in a single column vertically down the page on all screen sizes. Each news post shows the title, date of post, the author, the first 200 characters of introduction. By clicking on title user will be redirected to post view page.
+
+![news1](static/readmeimages/news1.jpg)
+
+Superuser can also add, edit and delete a post from this page.
+
+![news2](static/readmeimages/news2.jpg)
+
+#### Post
+
+The news post page shows the full details of the individual news. On the top users can see handy web navigation to back to all news.
+
+![post1](static/readmeimages/post1.jpg)
+
+Underneath the post, there is an option to leave a comment about post. However Guest users are limited to view the comments only.
+
+![post2](static/readmeimages/post2.jpg)
+
+User will only be able to leave a comment if he is logged in.
+
+![post3](static/readmeimages/post3.jpg)
+
+Superuser can delete any comment.
+
+![post4](static/readmeimages/post4.jpg)
+
+While adding post, Superuser can use HTML language to style post content.
+
+![add_post](static/readmeimages/add_post.jpg)
+
+#### Membership
 
