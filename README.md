@@ -100,11 +100,11 @@ For the testing of the store and subscriptions, a test credit card can be used b
 
 The main three colors in the app:
 
-- ![#007A47](static/readmeimages/#007A47.jpg) #007A47 used as a background for navbar
+- ![007A47](static/readmeimages/007A47.jpg) #007A47 used as a background for navbar
 
-- ![#198754](static/readmeimages/#198754.jpg) #198754 bootstrap "success" color used to higlight text and for buttons
+- ![198754](static/readmeimages/198754.jpg) #198754 bootstrap "success" color used to higlight text and for buttons
 
-- ![#1F2A34](static/readmeimages/#1F2A34.jpg) #1F2A34 used as footer background
+- ![1F2A34](static/readmeimages/1F2A34.jpg) #1F2A34 used as footer background
 
 #### Typography:
 
