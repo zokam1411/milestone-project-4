@@ -304,5 +304,14 @@ The order history shows a summary of the users previous orders. It is in the lay
 
 ![profile](docs/readmeimages/profile.jpg)
 
+<p id="future"></p>
+
+### Future features:
+
+**Watch product:** I would like to implement a feature to save favorite products, so that users can have quick access to this products in profile.
+
+#### Features left for implementation (features required by this release but they were not implemented due to time)
+- Integration with Travis for CI/CD and unit-test.
+
 
 
