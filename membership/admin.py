@@ -6,7 +6,6 @@ class StripeCustomerAdmin(admin.ModelAdmin):
         'user',
         'stripeCustomerId',
         'stripeSubscriptionId',
-        'date_created'
     )
 
 admin.site.register(StripeCustomer, StripeCustomerAdmin)
