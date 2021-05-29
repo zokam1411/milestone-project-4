@@ -1,11 +1,11 @@
 <ul class="m-0 d-md-none">
     {% if request.user.is_authenticated %}
     <li class="list-inline-item dropdown">
-        <a class="dropdown-toggle text-white" href="#" role="button" id="my-account" data-bs-toggle="dropdown"
+        <a class="dropdown-toggle text-white" href="#" role="button" id="my-account-mobile" data-bs-toggle="dropdown"
             aria-expanded="false">
             My account
         </a>
-        <ul class="dropdown-menu" aria-labelledby="my-account">
+        <ul class="dropdown-menu" aria-labelledby="my-account-mobile">
             <li class="text-center mb-2">Hello <strong>{{request.user}}</strong>!</li>
             {% if request.user.is_superuser %}
             <li><a class="dropdown-item" href="#">Product Management</a></li>
