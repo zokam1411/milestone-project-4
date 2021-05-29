@@ -142,7 +142,9 @@ This application has different features for different user types. User status de
 
 The navbar serves as the main navigation for the site. It has bootstrap class="sticky" so it's always visible at the top of the page accross all pages of the site. The navbar has four links, which go to the home page, the news page, the the memberships page and shop.
 
-The top header shows links to login and register and basket which is the link to the basket page and also to keep track of the ammount of the current basket. Bottom header contains FFRCCC club logo, which links to the homepage.
+The top header shows links to login and register and basket which is the link to the basket page and also to keep track of the ammount of the current basket.
+
+Bottom header contains FFRCCC club logo, which links to the homepage.
 
 ![navigation1](static/readmeimages/navigation-user.jpg)
 
@@ -163,12 +165,12 @@ The home page is the landing page upon sign-up and login and the main hub for th
 ![home1](static/readmeimages/home1.jpg)
 
 
-Beneath all this there are about section where we can find info about club
+Beneath all this there are about section where user can find info about club
 
 ![home2](static/readmeimages/home2.jpg)
 
 
-and membership section where we can find membership info and redirection button.
+and membership section where user can find membership info and redirection button to membership page.
 
 ![home3](static/readmeimages/home3.jpg)
 
@@ -182,9 +184,13 @@ Superuser can also add, edit and delete a post from this page.
 
 ![news2](static/readmeimages/news2.jpg)
 
-#### Post
+While adding post, Superuser can use HTML language to style post content.
 
-The news post page shows the full details of the individual news. On the top users can see handy web navigation to back to all news.
+![add_post](static/readmeimages/add_post.jpg)
+
+#### Post view
+
+The post page shows the full details of the individual news. On the top users can see handy web navigation to back to all news.
 
 ![post1](static/readmeimages/post1.jpg)
 
@@ -200,9 +206,32 @@ Superuser can delete any comment.
 
 ![post4](static/readmeimages/post4.jpg)
 
-While adding post, Superuser can use HTML language to style post content.
-
-![add_post](static/readmeimages/add_post.jpg)
-
 #### Membership
+
+The memberships page serves as the page to buy club membership. First two paragraphs are to explain membership conditions. On the bottom of the page - membership card is displayed.
+
+![membership](static/readmeimages/membership.jpg)
+
+
+The content of membership card is dependent on the current membership of the user. Guest user will see membership card however 'Join' button will be disabled and 'You must login to purchase membership' text will be displayed.
+
+![card1](static/readmeimages/card1.jpg)
+
+Logged in user will see card with active button.
+
+![card2](static/readmeimages/card2.jpg)
+
+Button click will take them to the stripe checkout page where they would add their card details and become member.
+
+![stripe-checkout](static/readmeimages/stripe-checkout.jpg)
+
+After successful payment, succeess page will show up.
+
+![success](static/readmeimages/success.jpg)
+
+Now when the logged in user is also a member, card on membership page will display
+
+![card3](static/readmeimages/card3.jpg)
+
+#### shop
 
