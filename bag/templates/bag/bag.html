@@ -62,7 +62,6 @@
                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                             {% csrf_token %}
                             <div class="input-group mx-auto">
-                                <span>
                                     <div class="input-group-prepend">
                                         <button class="decrement-qty btn btn-sm bg.transparent"
                                             data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
@@ -71,11 +70,9 @@
                                             </span>
                                         </button>
                                     </div>
-                                </span>
                                 <input class="form-control qty_input text-center pt-0 pb-0 mb-1" type="number"
                                     name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                     data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                <span>
                                     <div class="input-group-append">
                                         <button class="increment-qty btn btn-sm bg-transparent"
                                             data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
@@ -84,7 +81,6 @@
                                             </span>
                                         </button>
                                     </div>
-                                </span>
                                 {% if item.product.turns %}
                                 <input type="hidden" name="product_turns" value="{{ item.turns }}">
                                 {% endif %}
@@ -194,7 +190,7 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 
-<script type="text/javascript">
+<script>
     // Update quantity on click
     $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
