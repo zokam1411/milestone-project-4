@@ -98,7 +98,6 @@ active
                             </div>
                             <div class="col-auto">
                                 <div class="input-group">
-                                    <span>
                                         <div class="input-group-prepend">
                                             <button class="decrement-qty btn btn-sm bg.transparent"
                                                 data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
@@ -107,11 +106,9 @@ active
                                                 </span>
                                             </button>
                                         </div>
-                                    </span>
                                     <input class="form-control qty_input ps-3 pe-3 pt-0 pb-0 mb-1 text-center"
                                         type="number" name="quantity" value="1" min="1" max="99"
                                         data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                                    <span>
                                         <div class="input-group-append">
                                             <button class="increment-qty btn btn-sm bg-transparent"
                                                 data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
@@ -120,7 +117,6 @@ active
                                                 </span>
                                             </button>
                                         </div>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +201,7 @@ active
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 <!-- JS tabs functionality -->
-<script type="text/javascript">
+<script>
     const descriptionLink = document.getElementById("description");
     const reviewsLink = document.getElementById("reviews");
     const descriptionTab = document.getElementById("description-tab")
