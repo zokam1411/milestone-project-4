@@ -25,6 +25,16 @@ FFRCCC is a radio controlled car club. There are a number of users that the webs
 - <a href="#features">Features List 😲</a>
   - <a href="#existing">Existing Features</a>
   - <a href="#future">Future Features</a>
+  - <a href="#defensive">Defensive Design</a>
+- <a href="#databases">Databases 😲</a>
+  - <a href="#dbchoice">Database Choice</a>
+  - <a href="#dbmodeling">Data Modeling</a>
+- <a href="#testing">Testing 🔥</a>
+  - <a href="#manualtesting">Manual Testing</a>
+  - <a href="#ustesting">User Stories</a>
+  - <a href="#bugs">Bugs</a>
+
+
 
 <p id="project"></p>
 
@@ -306,12 +316,45 @@ The order history shows a summary of the users previous orders. It is in the lay
 
 <p id="future"></p>
 
-### Future features:
+### Future Features:
 
 **Watch product:** I would like to implement a feature to save favorite products, so that users can have quick access to this products in profile.
 
 #### Features left for implementation (features required by this release but they were not implemented due to time)
 - Integration with Travis for CI/CD and unit-test.
 
+<p id="defensive"></p>
 
+### Defensive Design:
+
+- If 404 and 500 error occured within the site, a page that has the message of the error and 'Back to Home' button so that the user would not be lost. The templates of 404.html and 500.html are added to the root template directory
+
+- Django Form Validation
+
+<div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
+
+
+<p id="databases"></p>
+
+## 4️⃣ Databasaes:
+
+<p id="dbchoice"></p>
+
+### Database Choice:
+
+- Development phase SQLight database was used for the development which is installed with Django.
+
+- Deployment phase PostgreSQL was used on deployment stage, which is provided as add-on by Heroku application.
+
+- User model is provided as a default by [Django's authentication system](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/).
+
+<p id="dbmodeling"></p>
+
+### Data Modeling:
+
+Entity Relationship Diagram of this project:
+
+![dbmodel](docs/readmeimages/dbmodel.jpg)
+
+<div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
 
