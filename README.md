@@ -290,3 +290,19 @@ If the user will enter the basket without products the information that bag is e
 
 ![bag2](docs/readmeimages/bag2.jpg)
 
+#### Checkout
+
+The checkout page has two sections, the delivery and personal information details and the total of the order. The details is a form when, if logged in, lets the user save their information to their profile for a quicker checkout next time. The order summary is similar to the basket page, and shows the breakdown of the amounts with the option ot edit the basket and a final summary of how much will be charged. The final feature on the page is the payment information which uses Stripe to handle the payments. A successfull payment will take the users to the order success page showing the order summary.
+
+![checkout](docs/readmeimages/checkout.jpg)
+
+#### Profile
+
+Logged in user have access to profile page. The profile page is split into two sections, delivery details and order history. The delivery details is a simple form and has an 'update information' button below to update their details on their profile, which would also reflect on the delivery details on the checkout page.
+
+The order history shows a summary of the users previous orders. It is in the layout of a table and shows the order number, date, items and the grand total. Clicking the order number would take the user to the order summary where they would see a more detailed breakdown of the order.
+
+![profile](docs/readmeimages/profile.jpg)
+
+
+
