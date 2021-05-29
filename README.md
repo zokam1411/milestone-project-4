@@ -358,3 +358,22 @@ Entity Relationship Diagram of this project:
 
 <div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
 
+<p id="testing"></p>
+
+## 5️⃣ Testing 🔥
+
+<p id="manualtesting"></p>
+
+### Manual Testing:
+
+Testing and improving the application was carried out throughout its development. The main testing tool was Google Chrome dev tools and devices such as phone, tablet and laptop with several versions of browsers (Google Chrome, Firefox, Edge, Opera).
+
+Bootstrap5 framework was tested extensively to ensure application is mobile friendly. The Application was tested on my Lenovo Thinkbook laptop and large Samsung TV screen, Samsung Galaxy S6 mobile and Lenovo tablet. The application worked fine on all devices. If something didn't work as it should during the test it was immediately checked and corrected in DevTools and then implemented into the code and checked again. If test passed it was committed and pushed into repository.
+
+Python based code was checked and tested using PEP8 online validator and finished without any errors.
+
+JavaScript and jQuery were tested using JS Hint and finished without errors.
+
+CSS was validated using W3C's Jigsaw Validator and finished without errors.
+
+Passing the HTML file content through the W3C Validator for HTML resulted in numerous errors triggered by Jinja's framework embedded within the document. The standard HTML is W3C compliant, no other errors found.
