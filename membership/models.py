@@ -3,6 +3,10 @@ from django.db import models
 
 
 class StripeCustomer(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Stripe Customers'
+
     user = models.OneToOneField(to=User, on_delete=models.CASCADE)
     stripeCustomerId = models.CharField(max_length=255)
     stripeSubscriptionId = models.CharField(max_length=255)
