@@ -130,7 +130,7 @@ The first raw design wos drawn on a piece of paper and then the idea was transfe
 
 <p id="features"></p>
 
-## 4️⃣ Features List 😲
+## 3️⃣ Features List 😲
 
 <p id="existing"></p>
 
@@ -253,7 +253,7 @@ The shop page lists all the products which are listed on the product database an
 
 4. All the products are listed in individual cards which show the, title, SKU, price and 'add to bag' button if product has no options to select or 'select option' button if it does. Clicking the image or title will take the user to the product detail page. Clicking on the 'add to bag' button will automatically add product to bag.
 
-5. On the left of the website user can select one of the categories or see all products.
+5. On the left of the website user can select one of the category to filter products or see all products.
 
 ![shop](docs/readmeimages/shop.jpg)
 
@@ -261,6 +261,21 @@ The shop page lists all the products which are listed on the product database an
 
 ![shop2](docs/readmeimages/shop2.jpg)
 
-#### Add view
+#### Product details
 
+The prduct detail page shows more information about a particular product. This has some of the same information seen on the product detail card in the store page, with some extra details. On the product detail page the user can see the product image, title, SKU, price, full description and reviews with number of reviews. On top of this, the user can update the quantity and select the options of the product to purchse, if the product has options. There is also a primary button here to add the product to the basket, and a secondary button to go back to the store. On the top of the page there is handy site nav where user can back to prouct category. This will take user back to the store, but the products will be filtered by that category.
+
+![Product detail](docs/readmeimages/product-detail.jpg)
+
+- Guest users are limited to view the reviews only.
+
+![review1](docs/readmeimages/review1.jpg)
+
+- User will only be able to leave a review if he is logged in.
+
+![review2](docs/readmeimages/review2.jpg)
+
+- Superuser can delete any review.
+
+![review3](docs/readmeimages/review3.jpg)
 
