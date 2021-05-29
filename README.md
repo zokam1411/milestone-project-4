@@ -100,11 +100,11 @@ For the testing of the store and subscriptions, a test credit card can be used b
 
 The main three colors in the app:
 
-- ![007A47](static/readmeimages/007A47.jpg) #007A47 used as a background for navbar
+- ![007A47](docs/readmeimages/007A47.jpg) #007A47 used as a background for navbar
 
-- ![198754](static/readmeimages/198754.jpg) #198754 bootstrap "success" color used to higlight text and for buttons
+- ![198754](docs/readmeimages/198754.jpg) #198754 bootstrap "success" color used to higlight text and for buttons
 
-- ![1F2A34](static/readmeimages/1F2A34.jpg) #1F2A34 used as footer background
+- ![1F2A34](docs/readmeimages/1F2A34.jpg) #1F2A34 used as footer background
 
 #### Typography:
 
@@ -146,92 +146,92 @@ The top header shows links to login and register and basket which is the link to
 
 Bottom header contains FFRCCC club logo, which links to the homepage.
 
-![navigation1](static/readmeimages/navigation-user.jpg)
+![navigation1](docs/readmeimages/navigation-user.jpg)
 
 While user is logged in, instead of login and register links, he can see a 'My account' dropdown with options to go to the profile page or logout.
 
-![navigation2](static/readmeimages/navigation.jpg)
+![navigation2](docs/readmeimages/navigation.jpg)
 
 #### Footer:
 
 The footer serves as secondary navigation. It has the same links as the navbar and also features the car club address and some external links to facebook, twitter and youtube.
 
-![footer](static/readmeimages/footer.jpg)
+![footer](docs/readmeimages/footer.jpg)
 
 #### Home:
 
 The home page is the landing page upon sign-up and login and the main hub for the app. The main features on this site is the hero image and a statement in header to say to check the online shop.
 
-![home1](static/readmeimages/home1.jpg)
+![home1](docs/readmeimages/home1.jpg)
 
 
 Beneath all this there are about section where user can find info about club
 
-![home2](static/readmeimages/home2.jpg)
+![home2](docs/readmeimages/home2.jpg)
 
 
 and membership section where user can find membership info and redirection button to membership page.
 
-![home3](static/readmeimages/home3.jpg)
+![home3](docs/readmeimages/home3.jpg)
 
 #### News:
 
 The news page serves as a place listing all of the news posts one page. The news are stacked in a single column vertically down the page on all screen sizes. Each news post shows the title, date of post, the author, the first 200 characters of introduction. By clicking on title user will be redirected to post view page.
 
-![news1](static/readmeimages/news1.jpg)
+![news1](docs/readmeimages/news1.jpg)
 
 Superuser can also add, edit and delete a post from this page.
 
-![news2](static/readmeimages/news2.jpg)
+![news2](docs/readmeimages/news2.jpg)
 
 While adding post, Superuser can use HTML language to style post content.
 
-![add_post](static/readmeimages/add_post.jpg)
+![add_post](docs/readmeimages/add_post.jpg)
 
 #### Post view
 
 The post page shows the full details of the individual news. On the top users can see handy web navigation to back to all news.
 
-![post1](static/readmeimages/post1.jpg)
+![post1](docs/readmeimages/post1.jpg)
 
 Underneath the post, there is an option to leave a comment about post. However Guest users are limited to view the comments only.
 
-![post2](static/readmeimages/post2.jpg)
+![post2](docs/readmeimages/post2.jpg)
 
 User will only be able to leave a comment if he is logged in.
 
-![post3](static/readmeimages/post3.jpg)
+![post3](docs/readmeimages/post3.jpg)
 
 Superuser can delete any comment.
 
-![post4](static/readmeimages/post4.jpg)
+![post4](docs/readmeimages/post4.jpg)
 
 #### Membership
 
 The memberships page serves as the page to buy club membership. First two paragraphs are to explain membership conditions. On the bottom of the page - membership card is displayed.
 
-![membership](static/readmeimages/membership.jpg)
+![membership](docs/readmeimages/membership.jpg)
 
 
 The content of membership card is dependent on the current membership of the user. Guest user will see membership card however 'Join' button will be disabled and 'You must login to purchase membership' text will be displayed.
 
-![card1](static/readmeimages/card1.jpg)
+![card1](docs/readmeimages/card1.jpg)
 
 Logged in user will see card with active button.
 
-![card2](static/readmeimages/card2.jpg)
+![card2](docs/readmeimages/card2.jpg)
 
 Button click will take them to the stripe checkout page where they would add their card details and become member.
 
-![stripe-checkout](static/readmeimages/stripe-checkout.jpg)
+![stripe-checkout](docs/readmeimages/stripe-checkout.jpg)
 
 After successful payment, succeess page will show up.
 
-![success](static/readmeimages/success.jpg)
+![success](docs/readmeimages/success.jpg)
 
 Now when the logged in user is also a member, card on membership page will display
 
-![card3](static/readmeimages/card3.jpg)
+![card3](docs/readmeimages/card3.jpg)
 
-#### shop
+#### Shop
 
