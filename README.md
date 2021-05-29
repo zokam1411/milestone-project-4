@@ -279,3 +279,14 @@ The prduct detail page shows more information about a particular product. This h
 
 ![review3](docs/readmeimages/review3.jpg)
 
+#### Bag
+
+The basket page shows a summary of the products in the basket and the amount that the current basket equates to. Here, the user has the ability to update the quantity of each product or delete it entirely from the basket, or drop the whole basket.
+On the right side of the bag page, there is summary section that shows Total, Discount, Delivery and Grand Total. This way, user is able to check the order summary at first glance even if he has added a lot of products to the shopping cart.
+
+![bag](docs/readmeimages/bag.jpg)
+
+If the user will enter the basket without products the information that bag is empty will show up.
+
+![bag2](docs/readmeimages/bag2.jpg)
+
