@@ -734,7 +734,8 @@ In order to deploy to heroku I:
 
 1. In Heroku I created a new app. I clicked on 'NEW' button and from dropdown menu I selected 'Create New App'. I set app name and chose region closest to me.
 2. Once the app was created I went to Resources tab and in Add-ons search bar I typed Postgress and selected Heroku Postgres. I selected Hobby Dev - Free and added it to my project.
-3. Next I went to Settings tab and from Reveal Config Vars I copied DATABASE_URL Key.
+3. Next I went to Settings tab and from Reveal Config Vars I copied:
+- DATABASE_URL Key.
 4. I set DATABASE_URL in env.py
 5. To be able to deploy my Django project to Heroku I installed in gitpod required packages:
 - gunicorn
@@ -777,7 +778,7 @@ heroku login -i
 ```
 13. From the command line in GitPod I temporarily disable collect static files:
 ```
-heroku config:set DISABLE_COLLECT=1
+heroku config:set DISABLE_COLLECTSTATIC=1
 ```
 14. In setting.py I updated Allowed Hosts:
 ```
@@ -799,26 +800,67 @@ git push heroku master
 ```
 18. After this I checked my Heroku, clicked on 'Open App' button and my app was successfully deployed but without static files yet.
 19. Once in Heroku, in 'Deploy' tab I connected app to GitHub to enabled automatic deploys.
-20. In setting.py I changed DEBUG settings:
+20. In Settings tab in Config Variables I set SECRET_KEY
+21. In setting.py I changed DEBUG settings:
 ```
 DEBUG = 'DEVELOPMENT' in os.environ
 ```
+22. The static files and media files for this deployed site (e.g. products images) are hosted in the AWS S3 Bucket. In order to upload files I created:
+- AWS account.
+- Bucket Policy
+- Group
+- Access Policy
+- User
 
+23. To connect Django to S3 bucket I installed two new packages using GitPod command line:
+```
+pip3 install boto3
+```
+```
+pip3 install django storages
+```
+24. I freeze installed packages to requirements.txt.
+25. I added 'storages' into INSTALLED_APPS in settings.py
+26. I added following into settings.py:
+```
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
 
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'ffrccc-project'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
 
-7. In Settings tab in Reveal Config Vars I added my environmental variables:
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
+27. I added <a href="custom_storages.py">custom_storages.py</a> file.
+28. Next in Heroku in Settings tab in Reveal Config Vars I added my AWS environmental variables:
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_ACCESS_KEY
-- DATABASE_URL
-- DOMAIN_URL
+- USE_AWS = True
+29. From the same location I removed DISABLE_COLLECTSTATIC variable as it was not longer needed.
+30. In GitPod I pushed all changes to GitHub and automatically to Heroku.
+31. After this I checked my Heroku, clicked on 'Open App' button and my app was successfully deployed including static files.
+32. Finally I added the rest of Heroku Config Variables in Settings tab:
 - EMAIL_HOST_PASS
 - EMAIL_HOST_USER
-- SECRET_KEY
 - STRIPE_MEMBERSHIP_WH_SECRET
 - STRIPE_PRICE_ID
 - STRIPE_PUBLIC_KEY
 - STRIPE_SECRET_KEY
 - STRIPE_WH_SECRET
-- USE_AWS
 
