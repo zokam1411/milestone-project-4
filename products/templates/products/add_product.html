@@ -2,16 +2,28 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <div class="row mt-3 mb-3">
-        <div class="col-12">
-            <h2 class="m-0"><strong>Add product <i class="fas fa-folder-plus"></i></strong></h2>
+<!-- Back to shop -->
+<div class="site-nav mt-3 mb-3 pt-1 pb-1 bg-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'products' %}" class="text-success">&lt; BACK TO SHOP</a>
+            </div>
         </div>
     </div>
 </div>
+<!-- Hero section -->
+<div class="container">
+    <div class="row mt-3 mb-3">
+        <div class="col-12">
+            <h2 class="m-0"><strong>Add New Product <i class="fas fa-folder-plus"></i></strong></h2>
+        </div>
+    </div>
+</div>
+<!-- Add form -->
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-8 offset-ms-2 col-lg-6 offset-lg-3">
             <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
