@@ -223,11 +223,10 @@ STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
 STRIPE_PRICE_ID = os.environ.get('STRIPE_PRICE_ID', '')
 STRIPE_MEMBERSHIP_WH_SECRET = os.environ.get('STRIPE_MEMBERSHIP_WH_SECRET', '')
 DOMAIN_URL = os.environ.get('DOMAIN_URL', '')
-DEFAULT_FROM_EMAIL = 'info@ffrccc.ie'
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'wrottesleygolfclub@wgc.com'
+    DEFAULT_FROM_EMAIL = 'info@ffrccc.ie'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
