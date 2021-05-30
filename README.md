@@ -37,6 +37,10 @@ FFRCCC is a radio controlled car club. There are a number of users that the webs
   - <a href="#ustesting">User Stories</a>
   - <a href="#bugs">Bugs</a>
 - <a href="#deployment">Deployment 🚀</a>
+- <a href="#credits">Credits 🙏</a>
+  - <a href="#code">Code</a>
+  - <a href="#media">Media</a>
+  - <a href="#ack">Acknowledgments</a>
 
 
 
@@ -926,3 +930,38 @@ python3 manage.py createsuperuser
 python3 manage.py runserver
 ```
 7. To access the admin panel, you can add the /admin path at the end of the url link and login using your superuser credentials.
+
+<div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
+
+<p id="credits"></p>
+
+## 8️⃣ Credits 🙏
+
+<p id="code"></p>
+
+- The project's code was developed by following the Code Institute video lessons and based on the understanding of the Boutique Ado Django Mini-Project, but was customized, modified and enhanced to fit the project purposes.
+
+- <a href = "https://testdriven.io/blog/django-stripe-subscriptions/">Stripe Subscription Payment Options</a> I used this tutorial to understeand how to setup Stripe subscription.
+
+- <a href = "https://www.askpython.com/django/django-blog-app">Django Blog App – Add Bloging and Commenting to Your Django App</a> I used this tutorial to understeand how to add comments to post.
+
+<p id="media"></p>
+
+### Media:
+
+- All the icons in this website were provided by [Font Awesome](https://fontawesome.com/).
+- Favicon was made by [favicon.io](https://favicon.io/).
+- Logo was made by [FreeLogoDesign](https://www.freelogodesign.org/)
+- Hero and club images - Lee McGuire - Secretary in [Dublin Model Car Club](http://www.dublinmodelracing.com/contact.html)
+
+<p id="ack"></p>
+
+### Acknowledgments:
+
+- <a href="https://codeinstitute.net" rel="noopener" target="_blank">Code Institute</a>
+- <a href="https://stackoverflow.com/" rel="noopener" target="_blank">Stack Overflow</a>
+- Code Institute Slack Community.
+- My mentor Guido Cecilio for guidance and support.
+- My family and friends for their patience and honest critique throughout.
+
+<div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
