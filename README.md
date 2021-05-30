@@ -726,6 +726,99 @@ Result: All works ass expected. Django administration panel is working fine.
 
 ## 7️⃣ Deployment 🚀
 
+This project was developed in GitPod and deployed to Heroku for production.
+
+### Deploying to Heroku
+
+In order to deploy to heroku I:
+
+1. In Heroku I created a new app. I clicked on 'NEW' button and from dropdown menu I selected 'Create New App'. I set app name and chose region closest to me.
+2. Once the app was created I went to Resources tab and in Add-ons search bar I typed Postgress and selected Heroku Postgres. I selected Hobby Dev - Free and added it to my project.
+3. Next I went to Settings tab and from Reveal Config Vars I copied DATABASE_URL Key.
+4. I set DATABASE_URL in env.py
+5. To be able to deploy my Django project to Heroku I installed in gitpod required packages:
+- gunicorn
+- psycopg2-binary
+- dj-database-url
+6. From the command line in gitpod I have created a requirements.txt file with the following command:
+```
+pip3 freeze > requirements.txt
+```
+7. From the command line in gitpod I have created the Procfile with the following command:
+```
+echo web: gunicorn rc_club.wsgi:application > Procfile
+```
+8. In settings.py file I imported dj_database_url
+9. In settings.py file I updated default database:
+```
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+```
+10. From the command line in GitPod I migrated the database models to Posgres:
+```
+python3 manage.py migrate
+```
+11. From the command line in GitPod I created superuser for Postgres:
+```
+python3 manage.py createsuperuser
+```
+12. From the command line in GitPod I logged in to Heroku:
+```
+heroku login -i
+```
+13. From the command line in GitPod I temporarily disable collect static files:
+```
+heroku config:set DISABLE_COLLECT=1
+```
+14. In setting.py I updated Allowed Hosts:
+```
+ALLOWED_HOSTS = ['ffrccc-project.herokuapp.com', 'localhost']
+```
+15. Finally I pushed evrything to my GitHub:
+```
+git add .
+git commit -m
+git push
+```
+16. To deploy to heroku I initialize my heroku git remote by typing in GitPod command line:
+```
+heroku git:remote -a ffrccc-project
+```
+17. Then pushed by typing command:
+```
+git push heroku master
+```
+18. After this I checked my Heroku, clicked on 'Open App' button and my app was successfully deployed but without static files yet.
+19. Once in Heroku, in 'Deploy' tab I connected app to GitHub to enabled automatic deploys.
+20. In setting.py I changed DEBUG settings:
+```
+DEBUG = 'DEVELOPMENT' in os.environ
+```
 
 
+
+
+7. In Settings tab in Reveal Config Vars I added my environmental variables:
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- DATABASE_URL
+- DOMAIN_URL
+- EMAIL_HOST_PASS
+- EMAIL_HOST_USER
+- SECRET_KEY
+- STRIPE_MEMBERSHIP_WH_SECRET
+- STRIPE_PRICE_ID
+- STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+- STRIPE_WH_SECRET
+- USE_AWS
 
