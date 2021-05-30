@@ -671,4 +671,12 @@ Result: All CRUD functionality works as it should. All forms are visible. While 
 - Each review will have 'Delete' link on the bottom.
 - Click 'Delete'.
 
+Result: Review delete functionality works as it should. The reviews counter decrease with every deleted review. Superuser can delete any individual review. After delete is successful he will be redirected to the same product page.
 
+#### Administrator:
+
+1. As an Administrator, I want to be able to login to an administration panel.
+- From home page in application in URL bar add /admin/ and press Enter.
+- Login using your username and password.
+
+Result: All works ass expected. Django administration panel is working fine.
