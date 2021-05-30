@@ -559,7 +559,7 @@ Result: Using application is very easy. User can always locate himself thanks to
 - From any page in application locate and click 'Log In' link on top header.
 - On 'Log In' page fill out form with details you provided on registration and click 'Log In' button.
 
-Result: Log In system works as it should. This is thanks to allauth. Once user provide correct informations he will be logged in to the app. Form validation is provided by allauth.
+Result: Log In functionality works as it should. This is thanks to allauth. Once user provide correct informations he will be logged in to the app. Form validation is provided by allauth.
 
 2. As a Registered User, I want to be able to change my account password.
 - From any page in application locate and click 'Log In' link on top header.
@@ -570,7 +570,7 @@ Result: Log In system works as it should. This is thanks to allauth. Once user p
 - On 'Change password' page input your new password and click 'Change Password' button.
 - 'Change password confirmation' page will show up and now you'll be able to login using new password.
 
-Result: Password change system works as it should. This is thanks to allauth.
+Result: Password change functionality works as it should. This is thanks to allauth.
 
 3. As a Registered User, I want to be able to comment under individual club news.
 - From any page in application locate and click 'News' link on navbar.
@@ -590,7 +590,7 @@ Result: Adding comment works as it should. The comment counter increse with ever
 - From success page click 'BACK TO MEMBERSHIP' page or click 'Membership' link on navbar.
 - On 'Membership' page scroll down to membership card where you'll be able to see that you are a club member.
 
-Result: Membership system works as it should. Once the checkout succeed webhook is confirmed, new Stripe Customer will be created in database with username, stripe subscription ID and stripe customer ID and confirmation email will be send. It will also set membership to 'active' in user profile. 'Membership' page is comunicating with Stripe to check if subscription status is 'active'.
+Result: Membership functionality works as it should. Once the checkout succeed webhook is confirmed, new Stripe Customer will be created in database with username, stripe subscription ID and stripe customer ID and confirmation email will be send. It will also set membership to 'active' in user profile. 'Membership' page is comunicating with Stripe to check if subscription status is 'active'.
 
 5. As a Registered User, I want to have a profile page where I can see and update my delivery details.
 - From any page in application locate and click 'My account' dropdown on navbar.
@@ -616,7 +616,59 @@ Result: Everything works as it should. 'Order History' section provides table wi
 
 Result: Adding reviews works as it should. The reviews counter increse with every review. Newest review are on the top. Each review shows author and date created.
 
+#### Superuser
 
+1. As a Superuser, I want to add, edit and delete news.
+- From any page in application locate and click 'News' link on navbar.
+- Adding post: 
+    - On 'News' page under the main header click on 'ADD NEW POST' button.
+    - On 'Add new post' page fill out form and click 'ADD POST' button.
+    - You will be redirected to 'Post detail' page.
+- Edit post:
+    - On 'News' page locate post you want edit and click on title.
+    - On 'Post detail' page Click 'Edit' link
+    - On 'Edit' page update prepopulated form and click 'EDIT POST' button.
+    - You will be redirected to 'Post detail' page.
+- Delete product:
+    - On 'News' page locate post you want edit and click on title.
+    - On 'Post detail' page Click 'Delete' link
+    - You will be redirected to 'News' page.
 
+Result: All CRUD functionality works as it should. All forms are visible. While adding new post, superuser can use HTML language to style post content. After add, new post will be stored in database.
+
+2. As a Superuser, I want to delete comments under individual news.
+- From any page in application locate and click 'News' link on navbar.
+- Click on post title you want to delete a comment.
+- Scroll down to comments section.
+- Each comment will have 'Delete' link on the bottom.
+- Click 'Delete'.
+
+Result: Comment delete functionality works as it should. The comment counter decrease with every deleted comment. Superuser can delete any individual comment. After delete is successful he will be redirected to the same post page.
+
+3. As a Superuser, I want to add, edit and delete products in shop.
+- From any page in application locate and click 'Shop' link on navbar.
+- Adding product: 
+    - On 'Shop' page under the main header click on 'ADD NEW PRODUCT' button.
+    - On 'Add new post' page fill out form and click 'ADD POST' button.
+    - You will be redirected to 'Product detail' page.
+- Edit product:
+    - On 'Shop' page locate product you want edit and click on image or title.
+    - On 'Product detail' page Click 'Edit' link
+    - On 'Edit' page update prepopulated form and click 'EDIT PRODUCT' button.
+    - You will be redirected to 'Product detail' page.
+- Delete product:
+    - On 'Shop' page locate product you want edit and click on image or title.
+    - On 'Product detail' page Click 'Delete' link
+    - You will be redirected to 'Shop' page.
+
+Result: All CRUD functionality works as it should. All forms are visible. While adding new product, superuser can use HTML language to style post dscription. After add, new product will be stored in database.
+
+4. As a Superuser, I want to delete products reviews.
+- From any page in application locate and click 'Shop' link on navbar.
+- Locate product card you want to delete review.
+- Click on product image or title to go to 'Product detail'.
+- Click review tab.
+- Each review will have 'Delete' link on the bottom.
+- Click 'Delete'.
 
 
