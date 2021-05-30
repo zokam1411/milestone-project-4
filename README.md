@@ -22,6 +22,9 @@ FFRCCC is a radio controlled car club. There are a number of users that the webs
 - <a href="#ux">User Experience Design 🧠</a>
     - <a href="#us">User Stories</a>
     - <a href="#us">Design</a>
+- <a href="#tech">Technologies Used 🔨</a>
+  - <a href="#lang">Languages</a>
+  - <a href="#flp">Frameworks, Libraries & Programs</a>
 - <a href="#features">Features List 😲</a>
   - <a href="#existing">Existing Features</a>
   - <a href="#future">Future Features</a>
@@ -33,6 +36,7 @@ FFRCCC is a radio controlled car club. There are a number of users that the webs
   - <a href="#manualtesting">Manual Testing</a>
   - <a href="#ustesting">User Stories</a>
   - <a href="#bugs">Bugs</a>
+- <a href="#deployment">Deployment 🚀</a>
 
 
 
@@ -138,9 +142,44 @@ The first raw design wos drawn on a piece of paper and then the idea was transfe
 
 <div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
 
+<p id="tech"></p>
+
+## 3️⃣ Technologies Used 🔨
+
+<p id="lang"></p>
+
+### Languages Used:
+
+- <a href="https://en.wikipedia.org/wiki/HTML" rel="noopener" target="_blank">HTML</a> - Standard mark-up language for documents designed to be displayed in a web browser.
+- <a href="https://en.wikipedia.org/wiki/CSS" rel="noopener" target="_blank">CSS</a> - Describes how HTML elements are to be displayed on screen, paper, or in other media.
+- <a href="https://en.wikipedia.org/wiki/JavaScript" rel="noopener" target="_blank">JavaScript</a> - Programming language that conforms to the ECMAScript specification.
+- <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" rel="noopener" target="_blank">Python</a> - Interpreted, high-level and general-purpose programming language
+
+<p id="flp"></p>
+
+### Frameworks, Libraries & Programs Used:
+
+- <a href="https://getbootstrap.com/" rel="noopener" target="_blank">Bootstrap</a> - A modern responsive front-end framework based on Material Design.
+- <a href="https://jquery.com/" rel="noopener" target="_blank">jQuery</a> - Fast, small, and feature-rich JavaScript library.
+- <a href="https://git-scm.com/" rel="noopener" target="_blank">Git</a> - Free and open source distributed version control system.
+- <a href="https://github.com/" rel="noopener" target="_blank">GitHub</a> - A Git repository hosting service.
+- <a href="https://www.gitpod.io/" rel="noopener" target="_blank">GitPod</a> - Streamlines developer workflows by providing prebuilt, collaborative development environments in your browser - powered by VS Code.
+- <a href="https://www.djangoproject.com/" rel="noopener" target="_blank">Django</a> - High-level Python Web framework that encourages rapid development and clean, pragmatic design.
+- <a href="https://www.heroku.com/" rel="noopener" target="_blank">Heroku</a> - A cloud platform as a service supporting several programming languages.
+- <a href="https://stripe.com/en-ie" rel="noopener" target="_blank">Stripe</a> - The company primarily offers payment processing software and application programming interfaces (APIs) for e-commerce websites and mobile applications.
+- <a href="https://www.sqlite.org/index.html" rel="noopener" target="_blank">SQLite</a> - A C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+- <a href="https://www.postgresql.org/" rel="noopener" target="_blank">PostgreSQL</a> - Is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
+- <a href="https://aws.amazon.com/s3/" rel="noopener" target="_blank">Amazon S3</a> - Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance.
+- <a href="https://fontawesome.com/" rel="noopener" target="_blank">Font Awesome</a> - A web font containing all the icons from the Twitter Bootstrap framework, and now many more.
+- <a href="https://fonts.google.com/" rel="noopener" target="_blank">Google Fonts</a> - A library of 999 free licensed font families.
+- <a href="balsamiq.com" rel="noopener" target="_blank">Balsamiq</a> - Wireframing tool.
+
+<div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
+
+
 <p id="features"></p>
 
-## 3️⃣ Features List 😲
+## 4️⃣ Features List 😲
 
 <p id="existing"></p>
 
@@ -336,7 +375,7 @@ The order history shows a summary of the users previous orders. It is in the lay
 
 <p id="databases"></p>
 
-## 4️⃣ Databasaes:
+## 5️⃣ Databasaes:
 
 <p id="dbchoice"></p>
 
@@ -360,7 +399,7 @@ Entity Relationship Diagram of this project:
 
 <p id="testing"></p>
 
-## 5️⃣ Testing 🔥
+## 6️⃣ Testing 🔥
 
 <p id="manualtesting"></p>
 
@@ -680,3 +719,13 @@ Result: Review delete functionality works as it should. The reviews counter decr
 - Login using your username and password.
 
 Result: All works ass expected. Django administration panel is working fine.
+
+ <div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
+
+ <p id="deployment"></p>
+
+## 7️⃣ Deployment 🚀
+
+
+
+
