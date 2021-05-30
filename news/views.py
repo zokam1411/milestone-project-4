@@ -128,4 +128,4 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
     messages.success(request, 'Comment deleted!')
-    return redirect(reverse('news'))
+    return redirect(reverse('post_detail', args=[comment.news_id]))
