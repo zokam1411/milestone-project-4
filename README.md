@@ -479,3 +479,78 @@ Result: Adjusting products in bag works as it should. Product QTY input will all
 - Click membership link on navbar and on the membership page check the price on the top of header.
 
 Result: Grand total price is displayed on every page across the app. This is thanks to contexts.py file in the bag app. 
+
+13. As a Guest User, I want to know how Grand Total was calculated.
+- From any page in application locate and click 'bag' link located on the top header.
+- If bag contains products you will see your products and on the right side Grand Total summary.
+- This will show:
+    - Total products - this is calculation of products total.
+    - Discount - this is shopping doscount.
+    - Delivery - this is delivery cost.
+    - Grand Total - this is summary of three above.
+
+Result: Grand Total calculation works as expected and is presented in very clear way. Guest users are not entiled to any discount and delivery cost for them is always &euro;5.
+
+14. As a Guest User, I want easily fill out delivery information.
+- From any page in application locate and click 'Shop' link on navbar.
+- Add products to bag through 'ADD TO BAG' button on product card or 'ADD TO BAG' button in product detail page.
+- Click on 'bag' link located on the top header.
+- On the 'bag' page click 'SECURE CHECKOUT' button.
+- On the 'checkout' page you will see 'Please fill out the form below to complete your order'.
+- Fil out Details, Delivery and Payment forms.
+
+Result: Filling out form works as expected. All form fields load correctly. Under delivery form the promt to login or create an account is visible. Form validation for mandatory fields works as expected. Filling the card information field with invalid information will prompt a validation error from stripe.
+
+15. As a Guest User, I want to view an order summary once a purchase is made.
+- From any page in application locate and click 'Shop' link on navbar.
+- Add products to bag through 'ADD TO BAG' button on product card or 'ADD TO BAG' button in product detail page.
+- Click on 'bag' link located on the top header.
+- On the 'bag' page click 'SECURE CHECKOUT' button.
+- On the 'checkout' page you will see required forms to fill out and 'order summary section' on right.
+- Fill out Details, Delivery and Payment forms.
+- Click 'Complete Order' button.
+- 'Success' page which will show a summary of the order.
+
+Result: Order summary works as expected. Once confirmation from stripe has come through, the user is taken to a success page which will show a summary of the order.
+
+16. As a Guest User, I want to be able to register for an account.
+- From any page in application locate and click 'Register' link on top header.
+- On 'Registration' page fill out Sign Up form and click 'SIGN UP' button.
+- On 'Confirm Email' page you will be informed that confirmation email was sent to your email provided.
+- Click confirmation link you've got from ffrcclub@gmail.com.
+- You'll be transfered on another confirmation page where you have to click 'CONFIRM' button once email address and username are correct.
+- You'll be redirected to login page where you can login using your registered details.
+
+Result: Registration works as it should. This is very robust system thanks to allauth. During registration it is validating database for existing email or username. It is also validating password if it is not same as username or to common.
+
+17. As a Guest user, I want to be able to view the site on any device I may have.
+- On device you prefer open <a href="https://ffrccc-project.herokuapp.com/">FFRCCC</a> app.
+- On 'Home' page scroll down to footer and click 'News' link.
+- On 'News' page click one of the articles.
+- On 'Post view' page scroll down to footer and click 'Membersgip' link.
+- On 'Membership' page scroll down to footer and click 'Shop' link.
+- On 'Shop' page choose one product card and click on it's image or title.
+- On 'Product view' page scroll down and click 'ADD TO BAG' button.
+- Click on 'Bag' link on page header on navbar if on medium or smaller devices.
+- On 'Bag' page click 'SECURE CHECKOUT' button.
+- On 'Checkout' page fill out forms and click 'COMPLETE ORDER' button.
+- On 'Checkout success' page click Home in navbar or use hamburger menu to find home link and clik.
+
+Result: Responsivnes of the app works as expected. App works great on small, medium and large devicess. This is thanks to using Bootstrap5 and extesivly using Google Dev Tools to check responsivnes during app developing.
+
+18. As a Guest user, I want app to be visually appealing and easy in use.
+- On device you prefer open <a href="https://ffrccc-project.herokuapp.com/">FFRCCC</a> app.
+- On 'Home' page scroll down to footer and click 'News' link.
+- On 'News' page click one of the articles.
+- On 'Post view' page scroll down to footer and click 'Membersgip' link.
+- On 'Membership' page scroll down to footer and click 'Shop' link.
+- On 'Shop' page choose one product card and click on it's image or title.
+- On 'Product view' page scroll down and click 'ADD TO BAG' button.
+- Click on 'Bag' link on page header on navbar if on medium or smaller devices.
+- On 'Bag' page click 'SECURE CHECKOUT' button.
+- On 'Checkout' page fill out forms and click 'COMPLETE ORDER' button.
+- On 'Checkout success' page click Home in navbar or use hamburger menu to find home link and clik.
+
+Result: Using application is very easy. User can always locate himself thanks to intelligent page navigation. Colors 'catch' user eye and page layout is user friendly.
+
+
