@@ -87,10 +87,10 @@ For the testing of the store and subscriptions, a test credit card can be used b
 #### Registered User:
 
 - As a Registered User, I want to have the ability to Login to the site via my registered details.
-- As a Registered User, I want to be able to recover my account password.
+- As a Registered User, I want to be able to change my account password.
 - As a Registered User, I want to be able to comment under individual club news.
 - As a Registered User, I want to be able to purchase club membership.
-- As a Registered User, I want to have a profile page where I can see my details.
+- As a Registered User, I want to have a profile page where I can see and update my delivery details.
 - As a Registered User, I want to have a profile page where I can see my purchase history.
 - As a Registered User, I want to write a products reviews.
 
@@ -98,7 +98,7 @@ For the testing of the store and subscriptions, a test credit card can be used b
 #### Superuser:
 
 - As a Superuser, I want to add, edit and delete news.
-- As a Superuser, I want to delete comments under individual news.#
+- As a Superuser, I want to delete comments under individual news.
 - As a Superuser, I want to add, edit and delete products in shop.
 - As a Superuser, I want to delete products reviews.
 
@@ -552,5 +552,71 @@ Result: Responsivnes of the app works as expected. App works great on small, med
 - On 'Checkout success' page click Home in navbar or use hamburger menu to find home link and clik.
 
 Result: Using application is very easy. User can always locate himself thanks to intelligent page navigation. Colors 'catch' user eye and page layout is user friendly.
+
+#### Registered User:
+
+1. As a Registered User, I want to have the ability to Login to the site via my registered details.
+- From any page in application locate and click 'Log In' link on top header.
+- On 'Log In' page fill out form with details you provided on registration and click 'Log In' button.
+
+Result: Log In system works as it should. This is thanks to allauth. Once user provide correct informations he will be logged in to the app. Form validation is provided by allauth.
+
+2. As a Registered User, I want to be able to change my account password.
+- From any page in application locate and click 'Log In' link on top header.
+- On 'Log In' page click 'Forgot Password?' link.
+- On 'Password reset' page input email you provided on registration and click 'Reset Passwrod' button.
+- On another page you will be informed that password reset link was sent on your email account.
+- Click on the reset password link you've got from ffrcclub@gmail.com
+- On 'Change password' page input your new password and click 'Change Password' button.
+- 'Change password confirmation' page will show up and now you'll be able to login using new password.
+
+Result: Password change system works as it should. This is thanks to allauth.
+
+3. As a Registered User, I want to be able to comment under individual club news.
+- From any page in application locate and click 'News' link on navbar.
+- On 'News' page click on the post you want to comment.
+- Scroll down to comment section.
+- Write a comment in provided input and click 'ADD COMMENT' button.
+
+Result: Adding comment works as it should. The comment counter increse with every comment. Newest comments are on the top. Each comment shows author and date created.
+
+4. As a Registered User, I want to be able to purchase club membership.
+- From any page in application locate and click 'Membership' link on navbar.
+- On 'Membership' page scroll down to membership card and click 'JOIN NOW' button.
+- You'll be redirected to Stripe checkout session.
+- Fill out Stripe form.
+- Once payment is confirmed you'll be redirected to success page.
+- Once Stripe webhook checkout succeed will succeed you'll get email confirmation.
+- From success page click 'BACK TO MEMBERSHIP' page or click 'Membership' link on navbar.
+- On 'Membership' page scroll down to membership card where you'll be able to see that you are a club member.
+
+Result: Membership system works as it should. Once the checkout succeed webhook is confirmed, new Stripe Customer will be created in database with username, stripe subscription ID and stripe customer ID and confirmation email will be send. It will also set membership to 'active' in user profile. 'Membership' page is comunicating with Stripe to check if subscription status is 'active'.
+
+5. As a Registered User, I want to have a profile page where I can see and update my delivery details.
+- From any page in application locate and click 'My account' dropdown on navbar.
+- Once dropdown menu expands, click 'My Profile'
+- On 'My Profile' page you'll see 'Default Delivery Information' section with form.
+- Fill out form and click 'UPDATE INFORMATION' button.
+
+Result: Everything works as it should. If the user has profile information saved, these fields will be pre populated. If the user has not saved profile information previously, the fields appear with their placeholders.
+
+6. As a Registered User, I want to have a profile page where I can see my purchase history.
+- From any page in application locate and click 'My account' dropdown on navbar.
+- Once dropdown menu expands, click 'My Profile'
+- On 'My Profile' page you'll see 'Order History' section.
+
+Result: Everything works as it should. 'Order History' section provides table with: Order Number, Date, Items, Order Total. Clicking on the order number takes the user to the 'Order History' page with the informations from 'Checkout success' page.
+
+7. As a Registered User, I want to write a products reviews.
+- From any page in application locate and click 'Shop' link on navbar.
+- On 'Shop' page choose product you want to review.
+- Click image or title to go to 'Product detail' page.
+- On 'Product detail' page find and click 'Review' tab.
+- Writr a review and click 'ADD REVIEW' button.
+
+Result: Adding reviews works as it should. The reviews counter increse with every review. Newest review are on the top. Each review shows author and date created.
+
+
+
 
 
