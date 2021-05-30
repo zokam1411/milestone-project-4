@@ -72,7 +72,7 @@ For the testing of the store and subscriptions, a test credit card can be used b
 - As a Guest User, I want to search for an item in the shop.
 - As a Guest user, I want to sort prducts by price, name and category.
 - As a Guest user, I want to see products within selected category.
-- As a Guest User, I want to see detailed view of an item.
+- As a Guest User, I want to see product detailed view.
 - As a Guest User, I want to be able to add items into the bag.
 - As a Guest User, I want to be able to manipulate a bag content.
 - As a Guest User, I want to see total count of the basket on every page.
@@ -377,3 +377,105 @@ JavaScript and jQuery were tested using JS Hint and finished without errors.
 CSS was validated using W3C's Jigsaw Validator and finished without errors.
 
 Passing the HTML file content through the W3C Validator for HTML resulted in numerous errors triggered by Jinja's framework embedded within the document. The standard HTML is W3C compliant, no other errors found.
+
+<p id="ustesting"></p>
+
+### User Stories:
+
+Here are the steps and results from the testing carried based on the project user stories to determine that the app and functionality are fit for purpose:
+
+#### Guest user:
+
+1. As a Guest user, I want to view information about the club.
+- Open <a href="https://ffrccc-project.herokuapp.com/">FFRCCC</a> app.
+- On the home page scroll down to 'About Us' section.
+
+Result: Informations about the club are very easy to find. Under the text user can find image from the club to illustrate how racings look like.
+
+2. As a Guest user, I want to see club contact informations.
+- From any page in application scroll down to footer.
+- Footer provides address, email and phone contact informations. Redirections to social media are also provided.
+
+Result: Informations in footer are displayed correctly, all links are working. Email and social media are currently the fastest ways to contact any club.
+
+3. As a Guest user, I want to read the latest news about the club.
+- From any page in application locate and click 'News' link on navbar.
+- On news page scroll down to see all news.
+- Click on the title to see particular post.
+
+Reslut: All news are displayed as they should. News are displayed from newset to oldest. Click on the news title will open detailed post view.
+
+4. As a Guest user, I want to read about benefits of membership.
+- Option 1:
+    - From any page in application locate and click 'Membership' link on navbar.
+    - On membership page scroll down to see informations about membership.
+- Option 2:
+    - On the home page scroll down to membership section.
+    - Click 'BECOME A MEMBER' button.
+    - On membership page scroll down to see informations about membership.
+
+Result: Both methods redirect user to membership page. On membership page user can find informations and benefits of membership. However guest user won't be able to purchase membership. 'JOIN NOW' button will be disabled.
+
+5. As a Guest user, I want to view all products in the shop.
+- From any page in application locate and click 'Shop' link on navbar.
+- On shop page scroll down to see displayed ads.
+
+Result: Everything is displayed as it should. Main shop page is displaying all ads. The number of products correctly shows the correct number shown on the page.
+
+6. As a Guest User, I want to search for an item in the shop.
+- From any page in application locate and click 'Shop' link on navbar.
+- On the shop locate search bar.
+- Type the product you are looking for and click on search icon.
+
+Result: Search option works as it should. When user searches for a product the results are filtered correctly based on the input and showing results compared against the title and description. Over the ads user will see search query he typed. 
+
+7. As a Guest user, I want to sort prducts by price, name and category.
+- From any page in application locate and click 'Shop' link on navbar.
+- Over the ads on the right side sort selector is located.
+- Click on selector and select sort method.
+
+Result: Sort option works as it should. User can sort produts by price, name and category. Sorting also works when sorting while filtering by search query a specific category.
+
+8. As a Guest user, I want to see products within selected category.
+- From any page in application locate and click 'Shop' link on navbar.
+- On the shop page on the left side are displayed categories.
+- Click on the category you want to browse.
+
+Result: Category selection works as it should. The arrow indicate which category user is browsing. Over the ads user can see current category and number of products.
+
+9. As a Guest User, I want to see product detailed view.
+- From any page in application locate and click 'Shop' link on navbar.
+- Scroll down and choose product you want to see.
+- Click on the image or product title.
+
+Result: Everything works as it should. Products in shop are displayed on cards and display: Image, title, SKU, price and action button. Clicking on image or title will redirect user to detailed view. User will see big image, description and reviews. However only logged in user will be able to add product reviews. 'KEEP SHOPPING' button will redirect user to shop main page. User can also select to browse product category from the handy page navigation.
+
+10. As a Guest User, I want to be able to add items into the bag.
+- From any page in application locate and click 'Shop' link on navbar.
+- Scroll down to find product you want to add to bag.
+- Option 1:
+    - Click on 'Add to bag' button on products card.
+- Option 2:
+    - Click on image or title to see detailed product view.
+    - In detailed product view click 'add to bag' button.
+
+Result: Adding items into the bag is working as it should. Success toast message confirms adding action. The price on the top header will automatically update. Products with 'sellect option' will require to select correct option before adding.
+
+11. As a Guest User, I want to be able to manipulate a bag content.
+- From any page in application locate and click 'bag' link located on the top header.
+- If bag contains no products you will see info 'Bag Empty'.
+- If bag contains products you will see your products and options to adjust them:
+    - Under the product image you will see 'bin' icon to completely remove product from your basket regardless of the quantity.
+    - In QTY tab you can manualy increase or decrease product quantity.
+    - 'Empty bag' button will remove all products deom bag.
+
+Result: Adjusting products in bag works as it should. Product QTY input will allow user to manually insert any quantity he likes, however if he input quantity lower or equal 0, the product will be removed from the bag. Each quantity modification requires to update the bag. Update bag link will show up evey time the QTY was adjusted.
+
+12. As a Guest User, I want to see total count of the basket on every page.
+- After adding the product to bag, the price on the top header will be updated.
+- Click home link on navbar and on the home page check the price on the top of header.
+- Click news link on navbar and on the news page check the price on the top of header.
+- Click any news to go to post view and check the price on the top of header.
+- Click membership link on navbar and on the membership page check the price on the top of header.
+
+Result: Grand total price is displayed on every page across the app. This is thanks to contexts.py file in the bag app. 
