@@ -8,8 +8,6 @@ from django.contrib.auth.models import User
 from profiles.models import UserProfile
 
 import stripe
-import json
-import time
 
 
 class StripeWH_Handler:
@@ -72,12 +70,12 @@ class StripeWH_Handler:
             content=f'Webhook received: {event["type"]}',
             status=200)
 
+    # Delete user from StripeCustomers once subscription expired
     def handle_customer_subscription_deleted(self, event):
 
         event_object = event['data']['object']
 
         customer = stripe.Customer(event_object['customer'])
-
         stripe_customer = get_object_or_404(StripeCustomer, stripeCustomerId=customer['id'])
         user = stripe_customer.user
         stripe_customer.delete()
