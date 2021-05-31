@@ -142,7 +142,8 @@ The application is primarily rectangular shaped. Buttons, cards have sharp edges
 
 The first raw design wos drawn on a piece of paper and then the idea was transferred to an advanced creator.
 
-##################################################################################################################
+- <a href="docs/readmeimages/desktop-wireframes.pdf" target="_blank">Desktop wireframes</a>
+- <a href="docs/readmeimages/mobile-wireframes.pdf" target="_blank">Mobile wireframes</a>
 
 <div align="center"><p style="text-align: center"><a href="#top">Back to top ⬆️</a></p></div>
 
