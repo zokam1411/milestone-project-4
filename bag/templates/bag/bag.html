@@ -62,25 +62,25 @@
                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                             {% csrf_token %}
                             <div class="input-group mx-auto">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-sm bg.transparent"
-                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-minus text-success"></i>
-                                            </span>
-                                        </button>
-                                    </div>
+                                <div class="input-group-prepend">
+                                    <button class="decrement-qty btn btn-sm bg.transparent"
+                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                        <span class="icon">
+                                            <i class="fas fa-minus text-success"></i>
+                                        </span>
+                                    </button>
+                                </div>
                                 <input class="form-control qty_input text-center pt-0 pb-0 mb-1" type="number"
                                     name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                     data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty btn btn-sm bg-transparent"
-                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-plus text-success"></i>
-                                            </span>
-                                        </button>
-                                    </div>
+                                <div class="input-group-append">
+                                    <button class="increment-qty btn btn-sm bg-transparent"
+                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                        <span class="icon">
+                                            <i class="fas fa-plus text-success"></i>
+                                        </span>
+                                    </button>
+                                </div>
                                 {% if item.product.turns %}
                                 <input type="hidden" name="product_turns" value="{{ item.turns }}">
                                 {% endif %}
@@ -207,7 +207,6 @@
             'csrfmiddlewaretoken': csrfToken,
             'product_turns': turns
         };
-
         $.post(url, data)
             .done(function () {
                 location.reload();
